@@ -1,0 +1,349 @@
+/* Component-specific styles */
+
+/* Button Variants */
+@layer components {
+  /* Primary Button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-primary rounded-lg transition-all duration-base hover:scale-105 hover:shadow-lg hover:shadow-harper-purple-500/25 active:scale-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-foreground bg-secondary border border-border rounded-lg transition-all duration-base hover:bg-secondary/80 hover:border-foreground/20 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Ghost Button */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-foreground rounded-lg transition-all duration-base hover:bg-accent hover:text-accent-foreground active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Outline Button */
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-foreground border border-border rounded-lg transition-all duration-base hover:bg-accent hover:text-accent-foreground active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Link Button */
+  .btn-link {
+    @apply inline-flex items-center text-sm font-medium text-primary underline-offset-4 hover:underline;
+  }
+
+  /* Button Sizes */
+  .btn-sm {
+    @apply px-4 py-2 text-xs;
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-base;
+  }
+
+  .btn-xl {
+    @apply px-10 py-5 text-lg;
+  }
+
+  /* Card Components */
+  .card {
+    @apply bg-card text-card-foreground rounded-xl border border-border shadow-sm transition-all duration-base;
+  }
+
+  .card-hover {
+    @apply hover:shadow-lg hover:border-foreground/20 hover:-translate-y-1;
+  }
+
+  .card-gradient {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-harper-purple-500/10 before:to-harper-blue-500/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-slow;
+  }
+
+  /* Badge Components */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full;
+  }
+
+  .badge-primary {
+    @apply bg-primary/10 text-primary;
+  }
+
+  .badge-secondary {
+    @apply bg-secondary text-secondary-foreground;
+  }
+
+  .badge-success {
+    @apply bg-harper-teal-500/10 text-harper-teal-600 dark:text-harper-teal-400;
+  }
+
+  .badge-warning {
+    @apply bg-yellow-500/10 text-yellow-600 dark:text-yellow-400;
+  }
+
+  .badge-danger {
+    @apply bg-destructive/10 text-destructive;
+  }
+
+  /* Input Components */
+  .input {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .input-error {
+    @apply border-destructive focus-visible:ring-destructive;
+  }
+
+  .input-success {
+    @apply border-harper-teal-500 focus-visible:ring-harper-teal-500;
+  }
+
+  /* Textarea */
+  .textarea {
+    @apply flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Select */
+  .select {
+    @apply flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Checkbox */
+  .checkbox {
+    @apply h-4 w-4 rounded border border-input ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground;
+  }
+
+  /* Radio */
+  .radio {
+    @apply h-4 w-4 rounded-full border border-input ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Switch */
+  .switch {
+    @apply peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input;
+  }
+
+  /* Label */
+  .label {
+    @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+  }
+
+  /* Alert Components */
+  .alert {
+    @apply relative w-full rounded-lg border p-4;
+  }
+
+  .alert-default {
+    @apply bg-background text-foreground;
+  }
+
+  .alert-destructive {
+    @apply border-destructive/50 text-destructive dark:border-destructive;
+  }
+
+  .alert-success {
+    @apply border-harper-teal-500/50 text-harper-teal-600 dark:border-harper-teal-500 dark:text-harper-teal-400;
+  }
+
+  /* Navigation Components */
+  .nav-link {
+    @apply text-sm font-medium text-muted-foreground transition-colors hover:text-foreground;
+  }
+
+  .nav-link-active {
+    @apply text-foreground;
+  }
+
+  /* Dropdown Menu */
+  .dropdown-item {
+    @apply relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50;
+  }
+
+  /* Tabs */
+  .tab-trigger {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm;
+  }
+
+  /* Accordion */
+  .accordion-trigger {
+    @apply flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180;
+  }
+
+  /* Progress Bar */
+  .progress {
+    @apply relative h-4 w-full overflow-hidden rounded-full bg-secondary;
+  }
+
+  .progress-bar {
+    @apply h-full w-full flex-1 bg-primary transition-all;
+  }
+
+  /* Skeleton Loader */
+  .skeleton {
+    @apply animate-pulse rounded-md bg-muted;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    @apply z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2;
+  }
+
+  /* Modal/Dialog */
+  .modal-overlay {
+    @apply fixed inset-0 z-50 bg-background/80 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0;
+  }
+
+  .modal-content {
+    @apply fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg;
+  }
+
+  /* Divider */
+  .divider {
+    @apply my-6 h-px bg-border;
+  }
+
+  .divider-vertical {
+    @apply mx-4 h-full w-px bg-border;
+  }
+
+  /* Avatar */
+  .avatar {
+    @apply relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full;
+  }
+
+  .avatar-sm {
+    @apply h-8 w-8;
+  }
+
+  .avatar-lg {
+    @apply h-12 w-12;
+  }
+
+  .avatar-xl {
+    @apply h-16 w-16;
+  }
+
+  /* Chip */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 text-xs font-medium;
+  }
+
+  /* Code Block */
+  .code-block {
+    @apply relative rounded-lg bg-zinc-950 p-4 font-mono text-sm text-zinc-100;
+  }
+
+  .code-block-header {
+    @apply mb-2 flex items-center justify-between border-b border-zinc-800 pb-2;
+  }
+
+  /* Table */
+  .table {
+    @apply w-full caption-bottom text-sm;
+  }
+
+  .table-header {
+    @apply border-b;
+  }
+
+  .table-row {
+    @apply border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted;
+  }
+
+  .table-cell {
+    @apply p-4 align-middle [&:has([role=checkbox])]:pr-0;
+  }
+
+  /* Feature Card */
+  .feature-card {
+    @apply group relative overflow-hidden rounded-xl border bg-card p-6 transition-all duration-300 hover:shadow-xl;
+  }
+
+  .feature-icon {
+    @apply mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground;
+  }
+
+  /* Pricing Card */
+  .pricing-card {
+    @apply relative overflow-hidden rounded-2xl border bg-card p-8 shadow-sm transition-all duration-300 hover:shadow-xl;
+  }
+
+  .pricing-popular {
+    @apply border-primary shadow-lg scale-105;
+  }
+
+  /* Timeline */
+  .timeline-item {
+    @apply relative pb-8 pl-8 before:absolute before:left-0 before:top-2 before:h-full before:w-px before:bg-border last:pb-0 last:before:hidden;
+  }
+
+  .timeline-dot {
+    @apply absolute left-0 top-2 h-2 w-2 -translate-x-1/2 rounded-full bg-primary;
+  }
+
+  /* Stat Card */
+  .stat-card {
+    @apply rounded-lg border bg-card p-6 text-center;
+  }
+
+  .stat-value {
+    @apply text-4xl font-bold tracking-tight text-foreground;
+  }
+
+  .stat-label {
+    @apply mt-2 text-sm text-muted-foreground;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    @apply relative overflow-hidden rounded-2xl bg-gradient-primary p-12 text-center text-white;
+  }
+
+  .cta-pattern {
+    @apply absolute inset-0 bg-[url('/patterns/grid.svg')] opacity-10;
+  }
+
+  /* Hero Section */
+  .hero-gradient {
+    @apply absolute inset-0 bg-gradient-to-br from-harper-purple-500/20 via-transparent to-harper-blue-500/20;
+  }
+
+  /* Testimonial Card */
+  .testimonial-card {
+    @apply rounded-xl border bg-card p-6 shadow-sm;
+  }
+
+  .testimonial-quote {
+    @apply mb-4 text-lg italic text-muted-foreground;
+  }
+
+  /* FAQ Item */
+  .faq-item {
+    @apply border-b border-border py-4 last:border-0;
+  }
+
+  /* Blog Card */
+  .blog-card {
+    @apply group overflow-hidden rounded-lg border bg-card shadow-sm transition-all duration-300 hover:shadow-lg;
+  }
+
+  .blog-image {
+    @apply aspect-video w-full object-cover transition-transform duration-300 group-hover:scale-105;
+  }
+
+  /* Contact Form */
+  .contact-form {
+    @apply space-y-4 rounded-lg border bg-card p-6;
+  }
+
+  /* Footer */
+  .footer-link {
+    @apply text-sm text-muted-foreground transition-colors hover:text-foreground;
+  }
+
+  /* Loading Spinner */
+  .spinner {
+    @apply inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent;
+  }
+
+  .spinner-sm {
+    @apply h-4 w-4 border-2;
+  }
+
+  .spinner-lg {
+    @apply h-12 w-12 border-4;
+  }
+}

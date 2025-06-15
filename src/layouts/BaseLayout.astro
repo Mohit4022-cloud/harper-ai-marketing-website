@@ -1,0 +1,187 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const { 
+  title, 
+  description = "Harper AI - Transform your customer relationships with AI-powered revenue intelligence. Automate CRM updates, predict deal outcomes, and scale your revenue team.",
+  image = "/og-image.png",
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href
+} = Astro.props;
+
+const siteTitle = title ? `${title} | Harper AI` : "Harper AI - AI-Powered Revenue Intelligence Platform";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{siteTitle}</title>
+    <meta name="title" content={siteTitle} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="Harper AI" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={siteTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+    
+    <!-- Fonts with preload for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" 
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link 
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" 
+        rel="stylesheet"
+      />
+    </noscript>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#843dff" />
+    
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="author" content="Harper AI" />
+    <meta name="publisher" content="Harper AI" />
+    
+    <!-- Schema.org for Google -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Harper AI",
+        "url": "https://harperai.com",
+        "logo": "https://harperai.com/logo.png",
+        "description": "Harper AI transforms customer relationships with AI-powered revenue intelligence.",
+        "sameAs": [
+          "https://twitter.com/harperai",
+          "https://linkedin.com/company/harperai"
+        ]
+      }
+    </script>
+    
+    <!-- Critical CSS for above-the-fold content -->
+    <style is:inline>
+      /* Critical CSS for faster initial paint */
+      body { margin: 0; font-family: 'Inter', system-ui, sans-serif; }
+      .container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+      header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); z-index: 50; }
+      .font-display { font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif; }
+    </style>
+  </head>
+  <body>
+    <slot />
+    
+    <!-- Analytics Integration Placeholder -->
+    <script is:inline>
+      // Google Analytics 4 - Replace GA_MEASUREMENT_ID with your actual ID
+      if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID', {
+          page_path: window.location.pathname,
+        });
+        
+        // Load GA script asynchronously
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
+        document.head.appendChild(script);
+      }
+      
+      // Simple performance monitoring
+      if ('performance' in window) {
+        window.addEventListener('load', () => {
+          const perfData = window.performance.timing;
+          const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+          const domReadyTime = perfData.domContentLoadedEventEnd - perfData.navigationStart;
+          
+          // Log performance metrics (can send to analytics)
+          console.log('Page Load Time:', pageLoadTime, 'ms');
+          console.log('DOM Ready Time:', domReadyTime, 'ms');
+          
+          // Send to analytics if needed
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_timing', {
+              event_category: 'Performance',
+              name: 'load',
+              value: pageLoadTime
+            });
+          }
+        });
+      }
+    </script>
+    
+    <!-- Image lazy loading polyfill for older browsers -->
+    <script is:inline>
+      if ('loading' in HTMLImageElement.prototype) {
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        images.forEach(img => {
+          img.src = img.dataset.src || img.src;
+        });
+      } else {
+        // Fallback for browsers that don't support lazy loading
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+        document.body.appendChild(script);
+      }
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  /* Custom font for display headings */
+  .font-display {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Selection colors */
+  ::selection {
+    background-color: hsl(254 89% 62% / 0.2);
+    color: hsl(254 89% 62%);
+  }
+  
+  /* Focus visible styles */
+  *:focus-visible {
+    outline: 2px solid hsl(254 89% 62%);
+    outline-offset: 2px;
+  }
+</style>

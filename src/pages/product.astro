@@ -1,0 +1,277 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import Badge from '../components/ui/Badge.astro';
+
+const features = [
+  {
+    title: 'Intelligent Lead Capture',
+    description: 'Automatically capture and qualify leads from multiple sources with AI-powered form intelligence.',
+    icon: '🎯'
+  },
+  {
+    title: 'Smart Enrichment',
+    description: 'Enhance lead profiles with company data, social insights, and behavioral signals.',
+    icon: '✨'
+  },
+  {
+    title: 'Predictive Scoring',
+    description: 'Score leads based on conversion probability using machine learning algorithms.',
+    icon: '📊'
+  },
+  {
+    title: 'Automated Routing',
+    description: 'Route leads to the right sales rep based on territory, expertise, and availability.',
+    icon: '🚀'
+  },
+  {
+    title: 'Real-time Alerts',
+    description: 'Get instant notifications when high-value leads engage with your content.',
+    icon: '🔔'
+  },
+  {
+    title: 'Advanced Analytics',
+    description: 'Track conversion rates, lead velocity, and ROI with comprehensive dashboards.',
+    icon: '📈'
+  }
+];
+
+const processSteps = [
+  {
+    number: '01',
+    title: 'Connect Your Data Sources',
+    description: 'Integrate with your website, CRM, and marketing tools in minutes.'
+  },
+  {
+    number: '02',
+    title: 'AI Analyzes & Enriches',
+    description: 'Our AI enriches lead data and identifies high-intent signals.'
+  },
+  {
+    number: '03',
+    title: 'Smart Lead Routing',
+    description: 'Qualified leads are automatically routed to the right sales reps.'
+  },
+  {
+    number: '04',
+    title: 'Track & Optimize',
+    description: 'Monitor performance and let AI optimize your lead flow.'
+  }
+];
+
+const specifications = [
+  { label: 'API Rate Limit', value: '10,000 requests/hour' },
+  { label: 'Data Retention', value: '2 years' },
+  { label: 'Integration Time', value: '< 15 minutes' },
+  { label: 'Uptime SLA', value: '99.9%' },
+  { label: 'Support Response', value: '< 2 hours' },
+  { label: 'Data Centers', value: 'US, EU, APAC' }
+];
+---
+
+<BaseLayout title="Product Features - Harper AI">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden py-20 lg:py-32">
+    <div class="absolute inset-0 bg-gradient-to-br from-harper-purple-50 via-transparent to-harper-blue-50 dark:from-harper-purple-950/20 dark:to-harper-blue-950/20" />
+    
+    <div class="container relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <Badge variant="outline" class="mb-4">Product Features</Badge>
+        <h1 class="text-display-lg font-display font-bold tracking-tight mb-6">
+          Transform Your Lead Management with
+          <span class="text-gradient"> AI-Powered Intelligence</span>
+        </h1>
+        <p class="text-xl text-muted-foreground mb-8">
+          Harper AI revolutionizes how businesses capture, qualify, and convert leads using advanced artificial intelligence and machine learning.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <Button href="/demo" size="lg">
+            Get a Demo
+          </Button>
+          <Button href="/trial" variant="outline" size="lg">
+            Start Free Trial
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-display-sm font-display font-bold mb-4">
+          Powerful Features for Modern Sales Teams
+        </h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Everything you need to accelerate your sales pipeline and close more deals.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {features.map((feature) => (
+          <Card hover padding="lg">
+            <div class="text-4xl mb-4">{feature.icon}</div>
+            <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+            <p class="text-muted-foreground">{feature.description}</p>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section-padding bg-muted/50">
+    <div class="container">
+      <div class="text-center mb-12">
+        <Badge variant="outline" class="mb-4">How It Works</Badge>
+        <h2 class="text-display-sm font-display font-bold mb-4">
+          Get Started in Minutes
+        </h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Harper AI seamlessly integrates with your existing tools and starts delivering value immediately.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {processSteps.map((step, index) => (
+          <div class="relative">
+            {index < processSteps.length - 1 && (
+              <div class="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-border -translate-x-1/2" />
+            )}
+            <div class="text-center">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold mb-4">
+                {step.number}
+              </div>
+              <h3 class="text-lg font-semibold mb-2">{step.title}</h3>
+              <p class="text-muted-foreground text-sm">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshot Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <Badge variant="outline" class="mb-4">Intuitive Dashboard</Badge>
+          <h2 class="text-display-xs font-display font-bold mb-6">
+            See Everything at a Glance
+          </h2>
+          <p class="text-lg text-muted-foreground mb-6">
+            Our intuitive dashboard gives you real-time insights into your lead pipeline, conversion metrics, and team performance.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="text-primary mt-1">✓</div>
+              <div>
+                <strong>Real-time Analytics</strong> - Monitor lead flow and conversion rates as they happen
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="text-primary mt-1">✓</div>
+              <div>
+                <strong>Custom Dashboards</strong> - Create personalized views for different team members
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="text-primary mt-1">✓</div>
+              <div>
+                <strong>Mobile Responsive</strong> - Access your data from anywhere, on any device
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="relative">
+          <div class="aspect-video bg-gradient-to-br from-harper-purple-100 to-harper-blue-100 dark:from-harper-purple-900/20 dark:to-harper-blue-900/20 rounded-lg shadow-2xl flex items-center justify-center">
+            <span class="text-muted-foreground">Dashboard Screenshot</span>
+          </div>
+          <div class="absolute -bottom-4 -right-4 -z-10 w-full h-full bg-gradient-to-br from-harper-purple-200 to-harper-blue-200 dark:from-harper-purple-800/20 dark:to-harper-blue-800/20 rounded-lg" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Specifications -->
+  <section class="section-padding bg-muted/50">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <Badge variant="outline" class="mb-4">Technical Specs</Badge>
+          <h2 class="text-display-sm font-display font-bold mb-4">
+            Built for Scale & Reliability
+          </h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {specifications.map((spec) => (
+            <Card>
+              <div class="text-sm text-muted-foreground mb-1">{spec.label}</div>
+              <div class="text-2xl font-bold text-primary">{spec.value}</div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center">
+        <Badge variant="outline" class="mb-4">Security & Compliance</Badge>
+        <h2 class="text-display-sm font-display font-bold mb-6">
+          Enterprise-Grade Security
+        </h2>
+        <p class="text-lg text-muted-foreground mb-12">
+          Your data security is our top priority. Harper AI is built with enterprise-grade security features and compliance certifications.
+        </p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="text-4xl mb-2">🔒</div>
+            <div class="font-semibold">SOC 2 Type II</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-2">🛡️</div>
+            <div class="font-semibold">GDPR Compliant</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-2">🔐</div>
+            <div class="font-semibold">256-bit Encryption</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-2">✅</div>
+            <div class="font-semibold">CCPA Ready</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section-padding bg-gradient-to-br from-harper-purple-100 to-harper-blue-100 dark:from-harper-purple-950/20 dark:to-harper-blue-950/20">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-display-sm font-display font-bold mb-6">
+          Ready to Transform Your Lead Management?
+        </h2>
+        <p class="text-lg text-muted-foreground mb-8">
+          Join thousands of companies using Harper AI to accelerate their sales pipeline.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <Button href="/demo" size="lg">
+            Schedule a Demo
+          </Button>
+          <Button href="/pricing" variant="outline" size="lg">
+            View Pricing
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

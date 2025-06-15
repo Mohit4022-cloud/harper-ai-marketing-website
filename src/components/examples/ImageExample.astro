@@ -1,0 +1,57 @@
+---
+import OptimizedImage from '../ui/OptimizedImage.astro';
+
+// Example of how to use the OptimizedImage component
+---
+
+<div class="image-examples">
+  <!-- Hero image with high priority -->
+  <OptimizedImage
+    src="/images/hero-dashboard.jpg"
+    alt="Harper AI Dashboard showing revenue intelligence insights"
+    width={1920}
+    height={1080}
+    loading="eager"
+    fetchpriority="high"
+    class="w-full h-auto rounded-xl shadow-2xl"
+  />
+  
+  <!-- Regular content image with lazy loading -->
+  <OptimizedImage
+    src="/images/features/ai-insights.png"
+    alt="AI-powered insights feature"
+    width={800}
+    height={600}
+    loading="lazy"
+    class="w-full max-w-2xl mx-auto rounded-lg"
+  />
+  
+  <!-- Responsive image with custom sizes -->
+  <OptimizedImage
+    src="/images/team/ceo.jpg"
+    alt="CEO portrait"
+    width={400}
+    height={400}
+    loading="lazy"
+    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+    class="rounded-full"
+  />
+  
+  <!-- External image (CDN) -->
+  <OptimizedImage
+    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+    alt="Data visualization"
+    width={1200}
+    height={800}
+    loading="lazy"
+    class="w-full rounded-lg"
+  />
+</div>
+
+<style>
+  .image-examples {
+    display: grid;
+    gap: 2rem;
+    padding: 2rem;
+  }
+</style>

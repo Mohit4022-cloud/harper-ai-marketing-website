@@ -1,0 +1,137 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+  type?: 'website' | 'article' | 'product';
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  keywords?: string[];
+  noindex?: boolean;
+  nofollow?: boolean;
+  ogLocale?: string;
+  twitterCard?: 'summary' | 'summary_large_image' | 'app' | 'player';
+  twitterSite?: string;
+  twitterCreator?: string;
+  jsonLd?: any;
+}
+
+const {
+  title,
+  description = "Harper AI - Transform your customer relationships with AI-powered revenue intelligence. Automate CRM updates, predict deal outcomes, and scale your revenue team.",
+  image = "/og-image.png",
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  author = 'Harper AI',
+  keywords = ['AI CRM', 'revenue intelligence', 'sales automation', 'deal prediction', 'customer relationship management'],
+  noindex = false,
+  nofollow = false,
+  ogLocale = 'en_US',
+  twitterCard = 'summary_large_image',
+  twitterSite = '@harperai',
+  twitterCreator = '@harperai',
+  jsonLd
+} = Astro.props;
+
+const siteTitle = title ? `${title} | Harper AI` : "Harper AI - AI-Powered Revenue Intelligence Platform";
+const fullImageURL = image.startsWith('http') ? image : new URL(image, Astro.site).href;
+
+// Default JSON-LD schema
+const defaultJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Harper AI",
+  "url": "https://harperai.com",
+  "logo": "https://harperai.com/logo.png",
+  "description": "Harper AI transforms customer relationships with AI-powered revenue intelligence.",
+  "sameAs": [
+    "https://twitter.com/harperai",
+    "https://linkedin.com/company/harperai"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-555-123-4567",
+    "contactType": "customer service",
+    "areaServed": "US",
+    "availableLanguage": ["en"]
+  }
+};
+
+const finalJsonLd = jsonLd || defaultJsonLd;
+---
+
+<!-- Primary Meta Tags -->
+<title>{siteTitle}</title>
+<meta name="title" content={siteTitle} />
+<meta name="description" content={description} />
+{keywords && keywords.length > 0 && (
+  <meta name="keywords" content={keywords.join(', ')} />
+)}
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Robots Meta Tags -->
+<meta name="robots" content={`${noindex ? 'noindex' : 'index'}, ${nofollow ? 'nofollow' : 'follow'}`} />
+<meta name="googlebot" content={`${noindex ? 'noindex' : 'index'}, ${nofollow ? 'nofollow' : 'follow'}`} />
+
+<!-- Author -->
+<meta name="author" content={author} />
+<meta name="publisher" content="Harper AI" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={siteTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullImageURL} />
+<meta property="og:image:alt" content={`${title} - Harper AI`} />
+<meta property="og:site_name" content="Harper AI" />
+<meta property="og:locale" content={ogLocale} />
+
+{type === 'article' && (
+  <>
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+    {author && <meta property="article:author" content={author} />}
+  </>
+)}
+
+<!-- Twitter -->
+<meta property="twitter:card" content={twitterCard} />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={siteTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={fullImageURL} />
+<meta property="twitter:image:alt" content={`${title} - Harper AI`} />
+{twitterSite && <meta property="twitter:site" content={twitterSite} />}
+{twitterCreator && <meta property="twitter:creator" content={twitterCreator} />}
+
+<!-- Additional SEO Meta Tags -->
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Harper AI" />
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(finalJsonLd)} />
+
+<!-- Preconnect to external domains -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- DNS Prefetch for performance -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#843dff" />
+<meta name="msapplication-TileColor" content="#843dff" />
+
+<!-- Verification Meta Tags (add your own verification codes) -->
+<!-- <meta name="google-site-verification" content="your-google-verification-code" /> -->
+<!-- <meta name="msvalidate.01" content="your-bing-verification-code" /> -->
+<!-- <meta name="yandex-verification" content="your-yandex-verification-code" /> -->
+<!-- <meta name="p:domain_verify" content="your-pinterest-verification-code" /> -->

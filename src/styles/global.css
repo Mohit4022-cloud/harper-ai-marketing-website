@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 254 89% 62%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 254 89% 62%;
+    --radius: 0.75rem;
+
+    /* Harper AI Custom Properties */
+    --harper-gradient-primary: linear-gradient(135deg, #843dff 0%, #3b97f9 100%);
+    --harper-gradient-secondary: linear-gradient(135deg, #3b97f9 0%, #14b8a6 100%);
+    --harper-gradient-accent: linear-gradient(135deg, #7916ff 0%, #2579ee 100%);
+    
+    /* Typography Scale */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --font-size-5xl: 3rem;
+    --font-size-6xl: 3.75rem;
+    --font-size-7xl: 4.5rem;
+
+    /* Spacing Scale */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    --space-4xl: 6rem;
+    --space-5xl: 8rem;
+
+    /* Animation Durations */
+    --duration-fast: 150ms;
+    --duration-base: 250ms;
+    --duration-slow: 400ms;
+    --duration-slower: 600ms;
+
+    /* Z-index Scale */
+    --z-base: 0;
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 254 89% 62%;
+    --primary-foreground: 240 10% 3.9%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 254 89% 62%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom Font Loading */
+  @font-face {
+    font-family: 'Cal Sans';
+    src: url('/fonts/CalSans-SemiBold.woff2') format('woff2'),
+         url('/fonts/CalSans-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Focus Styles */
+  *:focus {
+    @apply outline-none;
+  }
+
+  *:focus-visible {
+    @apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Selection Styles */
+  ::selection {
+    @apply bg-primary/20 text-primary-foreground;
+  }
+
+  /* Scrollbar Styles */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+
+  /* Smooth Scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Typography Base Styles */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-display-lg;
+  }
+
+  h2 {
+    @apply text-display-md;
+  }
+
+  h3 {
+    @apply text-display-sm;
+  }
+
+  h4 {
+    @apply text-display-xs;
+  }
+
+  h5 {
+    @apply text-2xl;
+  }
+
+  h6 {
+    @apply text-xl;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  /* Link Styles */
+  a {
+    @apply transition-colors duration-base;
+  }
+
+  /* Code Styles */
+  code {
+    @apply font-mono text-sm bg-muted px-1.5 py-0.5 rounded-md;
+  }
+
+  pre code {
+    @apply bg-transparent p-0;
+  }
+
+  /* Form Input Styles */
+  input, textarea, select {
+    @apply w-full;
+  }
+
+  /* Button Base Styles */
+  button {
+    @apply transition-all duration-base;
+  }
+
+  /* Image Styles */
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  /* List Styles */
+  ul, ol {
+    @apply pl-6 space-y-2;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  /* Table Styles */
+  table {
+    @apply w-full border-collapse;
+  }
+
+  th, td {
+    @apply text-left p-2 border-b;
+  }
+
+  th {
+    @apply font-semibold;
+  }
+
+  /* Blockquote Styles */
+  blockquote {
+    @apply pl-4 border-l-4 border-primary italic;
+  }
+
+  /* HR Styles */
+  hr {
+    @apply border-border my-8;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  /* Text Gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-harper-purple-600 to-harper-blue-600;
+  }
+
+  /* Background Gradients */
+  .bg-gradient-primary {
+    background: var(--harper-gradient-primary);
+  }
+
+  .bg-gradient-secondary {
+    background: var(--harper-gradient-secondary);
+  }
+
+  .bg-gradient-accent {
+    background: var(--harper-gradient-accent);
+  }
+
+  /* Glass Morphism */
+  .glass {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  }
+
+  .glass-dark {
+    @apply bg-black/5 backdrop-blur-lg border border-black/10;
+  }
+
+  /* Glow Effects */
+  .glow-purple {
+    @apply shadow-[0_0_50px_rgba(132,61,255,0.3)];
+  }
+
+  .glow-blue {
+    @apply shadow-[0_0_50px_rgba(59,151,249,0.3)];
+  }
+
+  .glow-teal {
+    @apply shadow-[0_0_50px_rgba(20,184,166,0.3)];
+  }
+
+  /* Hover Lift Effect */
+  .hover-lift {
+    @apply transition-transform duration-base hover:-translate-y-1;
+  }
+
+  /* Hover Scale Effect */
+  .hover-scale {
+    @apply transition-transform duration-base hover:scale-105;
+  }
+
+  /* Section Spacing */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  /* Container Variants */
+  .container-narrow {
+    @apply container max-w-4xl;
+  }
+
+  .container-wide {
+    @apply container max-w-7xl;
+  }
+
+  /* Animation Utilities */
+  .animate-in {
+    animation: fade-in var(--duration-slow) ease-out;
+  }
+
+  .animate-out {
+    animation: fade-out var(--duration-slow) ease-out;
+  }
+
+  /* Hide Scrollbar */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Aspect Ratios */
+  .aspect-golden {
+    @apply aspect-[1.618/1];
+  }
+
+  /* Grid Utilities */
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .grid-auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  /* Perspective */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .perspective-2000 {
+    perspective: 2000px;
+  }
+
+  /* 3D Transforms */
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* Backface Visibility */
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  /* Text Balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Mask Gradients */
+  .mask-gradient-to-b {
+    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+  }
+
+  .mask-gradient-to-t {
+    mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  }
+
+  .mask-gradient-to-r {
+    mask-image: linear-gradient(to right, black 0%, transparent 100%);
+  }
+
+  .mask-gradient-to-l {
+    mask-image: linear-gradient(to left, black 0%, transparent 100%);
+  }
+}

@@ -1,0 +1,158 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+import Navigation from "../components/layout/Navigation.astro";
+import Footer from "../components/layout/Footer.astro";
+
+const popularPages = [
+  { href: "/product", label: "Product Features", description: "Explore our AI-powered revenue intelligence platform" },
+  { href: "/pricing", label: "Pricing Plans", description: "Find the perfect plan for your team" },
+  { href: "/customers", label: "Customer Stories", description: "See how teams succeed with Harper AI" },
+  { href: "/demo", label: "Request Demo", description: "Get a personalized walkthrough of our platform" },
+];
+---
+
+<BaseLayout 
+  title="Page Not Found"
+  description="The page you're looking for doesn't exist. Let's help you find what you need."
+>
+  <Navigation />
+  
+  <main class="min-h-[70vh] flex items-center justify-center px-4">
+    <div class="container max-w-4xl mx-auto text-center">
+      <!-- Error Code -->
+      <div class="relative mb-8">
+        <h1 class="text-[12rem] md:text-[16rem] font-bold text-gray-100 leading-none">
+          404
+        </h1>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-harper-purple-600 to-harper-blue-600 rounded-full opacity-20 blur-3xl"></div>
+        </div>
+      </div>
+      
+      <!-- Error Message -->
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
+        Oops! Page not found
+      </h2>
+      <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+        The page you're looking for seems to have wandered off into the digital void. 
+        Don't worry, we'll help you get back on track.
+      </p>
+      
+      <!-- Search Suggestion -->
+      <div class="mb-12">
+        <div class="max-w-xl mx-auto">
+          <label for="search" class="sr-only">Search our site</label>
+          <div class="relative">
+            <input
+              type="search"
+              id="search"
+              name="search"
+              placeholder="Search for what you need..."
+              class="w-full px-6 py-4 pr-12 text-gray-900 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-harper-purple-600 focus:border-transparent transition-all duration-200"
+            />
+            <button
+              type="submit"
+              class="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-gray-500 hover:text-harper-purple-600 transition-colors duration-200"
+            >
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Popular Pages -->
+      <div class="mb-12">
+        <h3 class="text-xl font-semibold text-gray-900 mb-6">Popular pages</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+          {popularPages.map((page) => (
+            <a
+              href={page.href}
+              class="group p-6 bg-white border border-gray-200 rounded-xl hover:border-harper-purple-600 hover:shadow-lg transition-all duration-200"
+            >
+              <h4 class="font-semibold text-gray-900 group-hover:text-harper-purple-600 transition-colors duration-200 mb-2">
+                {page.label}
+              </h4>
+              <p class="text-sm text-gray-600">
+                {page.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+      
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/" variant="primary" size="lg">
+          Go to Homepage
+        </Button>
+        <Button href="/contact" variant="outline" size="lg">
+          Contact Support
+        </Button>
+      </div>
+      
+      <!-- Decorative Elements -->
+      <div class="absolute top-20 left-10 w-20 h-20 bg-harper-purple-600/10 rounded-full blur-2xl"></div>
+      <div class="absolute bottom-20 right-10 w-32 h-32 bg-harper-blue-600/10 rounded-full blur-3xl"></div>
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+<script>
+  // Simple search functionality
+  const searchInput = document.getElementById('search') as HTMLInputElement;
+  const searchForm = searchInput?.closest('form');
+  
+  searchForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const query = searchInput.value.trim();
+    if (query) {
+      // In a real implementation, this would search your site
+      // For now, redirect to homepage with a search query
+      window.location.href = `/?search=${encodeURIComponent(query)}`;
+    }
+  });
+  
+  // Add some animation to the 404 text
+  const errorCode = document.querySelector('h1');
+  if (errorCode) {
+    errorCode.style.opacity = '0';
+    errorCode.style.transform = 'scale(0.8)';
+    
+    setTimeout(() => {
+      errorCode.style.transition = 'all 0.6s ease-out';
+      errorCode.style.opacity = '1';
+      errorCode.style.transform = 'scale(1)';
+    }, 100);
+  }
+</script>
+
+<style>
+  /* Add some interactive hover effects */
+  input[type="search"]:focus {
+    box-shadow: 0 0 0 4px rgba(132, 61, 255, 0.1);
+  }
+  
+  /* Animate decorative elements */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-20px) scale(1.1);
+    }
+  }
+  
+  .absolute.top-20 {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .absolute.bottom-20 {
+    animation: float 8s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+</style>

@@ -1,0 +1,257 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import Badge from '../components/ui/Badge.astro';
+import Input from '../components/ui/Input.astro';
+import Select from '../components/ui/Select.astro';
+
+const benefits = [
+  {
+    icon: '👤',
+    title: 'Personalized Demo',
+    description: 'See Harper AI configured for your specific use case and industry'
+  },
+  {
+    icon: '🎯',
+    title: 'ROI Analysis',
+    description: 'Get a custom ROI projection based on your lead volume and sales metrics'
+  },
+  {
+    icon: '🔧',
+    title: 'Integration Planning',
+    description: 'Discuss how Harper AI will integrate with your existing tech stack'
+  },
+  {
+    icon: '❓',
+    title: 'Q&A Session',
+    description: 'Get all your questions answered by our product experts'
+  }
+];
+
+const expectations = [
+  'Live walkthrough of the Harper AI platform',
+  'Discussion of your specific lead management challenges',
+  'Custom configuration recommendations',
+  'Pricing and implementation timeline',
+  'Next steps and trial options'
+];
+
+const companySize = [
+  { value: '1-10', label: '1-10 employees' },
+  { value: '11-50', label: '11-50 employees' },
+  { value: '51-200', label: '51-200 employees' },
+  { value: '201-500', label: '201-500 employees' },
+  { value: '501-1000', label: '501-1000 employees' },
+  { value: '1000+', label: '1000+ employees' }
+];
+
+const leadVolume = [
+  { value: 'less-500', label: 'Less than 500/month' },
+  { value: '500-2000', label: '500-2,000/month' },
+  { value: '2000-10000', label: '2,000-10,000/month' },
+  { value: '10000-50000', label: '10,000-50,000/month' },
+  { value: '50000+', label: '50,000+/month' }
+];
+---
+
+<BaseLayout title="Request a Demo - Harper AI">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden py-20 lg:py-32">
+    <div class="absolute inset-0 bg-gradient-to-br from-harper-purple-50 via-transparent to-harper-blue-50 dark:from-harper-purple-950/20 dark:to-harper-blue-950/20" />
+    
+    <div class="container relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <Badge variant="outline" class="mb-4">Book a Demo</Badge>
+        <h1 class="text-display-lg font-display font-bold tracking-tight mb-6">
+          See Harper AI in Action
+        </h1>
+        <p class="text-xl text-muted-foreground">
+          Get a personalized demo and discover how Harper AI can transform your lead management process.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <!-- Left Column - Form -->
+        <div>
+          <Card padding="lg">
+            <h2 class="text-2xl font-bold mb-6">Schedule Your Demo</h2>
+            
+            <form class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Input 
+                  name="firstName"
+                  label="First Name"
+                  placeholder="John"
+                  required
+                />
+                <Input 
+                  name="lastName"
+                  label="Last Name"
+                  placeholder="Doe"
+                  required
+                />
+              </div>
+              
+              <Input 
+                type="email"
+                name="email"
+                label="Work Email"
+                placeholder="john@company.com"
+                required
+              />
+              
+              <Input 
+                name="company"
+                label="Company Name"
+                placeholder="Acme Inc."
+                required
+              />
+              
+              <Select
+                name="companySize"
+                label="Company Size"
+                options={companySize}
+                required
+              />
+              
+              <Select
+                name="leadVolume"
+                label="Monthly Lead Volume"
+                options={leadVolume}
+                required
+              />
+              
+              <div>
+                <label class="block text-sm font-medium text-foreground mb-2">
+                  Tell us about your needs
+                  <span class="text-muted-foreground ml-1">(optional)</span>
+                </label>
+                <textarea
+                  name="message"
+                  rows="4"
+                  class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="What challenges are you looking to solve with Harper AI?"
+                ></textarea>
+              </div>
+              
+              <Button type="submit" size="lg" fullWidth>
+                Request Demo
+              </Button>
+              
+              <p class="text-sm text-muted-foreground text-center">
+                By submitting this form, you agree to our 
+                <a href="/privacy" class="underline hover:text-primary"> Privacy Policy</a> and 
+                <a href="/terms" class="underline hover:text-primary"> Terms of Service</a>.
+              </p>
+            </form>
+          </Card>
+        </div>
+        
+        <!-- Right Column - Benefits -->
+        <div class="space-y-8">
+          <!-- Calendar Widget Placeholder -->
+          <Card padding="lg" class="text-center">
+            <div class="aspect-video bg-muted rounded-lg flex items-center justify-center mb-4">
+              <span class="text-muted-foreground">Calendar Widget</span>
+            </div>
+            <p class="text-sm text-muted-foreground">
+              Select a convenient time for your 30-minute demo
+            </p>
+          </Card>
+          
+          <!-- Benefits -->
+          <div>
+            <h3 class="text-xl font-semibold mb-6">What You'll Get</h3>
+            <div class="space-y-4">
+              {benefits.map((benefit) => (
+                <div class="flex gap-4">
+                  <div class="text-2xl">{benefit.icon}</div>
+                  <div>
+                    <h4 class="font-semibold mb-1">{benefit.title}</h4>
+                    <p class="text-sm text-muted-foreground">{benefit.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <!-- What to Expect -->
+          <div>
+            <h3 class="text-xl font-semibold mb-4">What to Expect</h3>
+            <ul class="space-y-2">
+              {expectations.map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-sm text-muted-foreground">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="section-padding bg-muted/50">
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-display-xs font-display font-bold mb-12">
+          Trusted by Industry Leaders
+        </h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+            <div class="flex items-center justify-center h-12 opacity-50">
+              <span class="text-muted-foreground">Logo {i}</span>
+            </div>
+          ))}
+        </div>
+        
+        <Card padding="lg" class="max-w-2xl mx-auto">
+          <blockquote>
+            <p class="text-lg mb-4">
+              "The Harper AI demo was incredibly valuable. They showed us exactly how the platform would work with our existing CRM and projected a 40% increase in lead conversion rates."
+            </p>
+            <footer>
+              <cite class="not-italic">
+                <div class="font-semibold">Sarah Johnson</div>
+                <div class="text-sm text-muted-foreground">VP of Sales, TechCorp</div>
+              </cite>
+            </footer>
+          </blockquote>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-display-sm font-display font-bold mb-6">
+          Not Ready for a Demo?
+        </h2>
+        <p class="text-lg text-muted-foreground mb-8">
+          Start with our free trial and experience Harper AI yourself.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <Button href="/trial" variant="outline" size="lg">
+            Start Free Trial
+          </Button>
+          <Button href="/product" variant="ghost" size="lg">
+            Learn More
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
