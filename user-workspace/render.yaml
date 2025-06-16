@@ -2,7 +2,7 @@ services:
   - type: web
     name: harper-ai-website
     runtime: docker
-    repo: https://github.com/Mohit4022-cloud/harper-ai-website
+    repo: https://github.com/Mohit4022-cloud/Website-BlackBox-V1.git
     branch: main
     dockerfilePath: ./Dockerfile
     dockerContext: .
