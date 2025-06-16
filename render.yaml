@@ -1,7 +1,18 @@
 services:
   - type: web
     name: harper-ai-marketing-website
-    runtime: docker
+    env: docker
     dockerfilePath: ./Dockerfile
     dockerContext: .
-    healthCheckPath: /
+    branch: main
+    buildFilter:
+      paths:
+        - src/**
+        - public/**
+        - package.json
+        - Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
