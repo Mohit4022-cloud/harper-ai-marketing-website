@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Harper AI - Your AI SDR That Never Sleeps">
+    <title>Harper AI - AI-Powered SDR Automation</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/tailwindlabs/tailwindcss/master/_brand/favicon-32x32.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#DDA0DD',
+                        accent: '#BA55D3',
+                    },
+                    backgroundImage: {
+                        'gradient-primary': 'linear-gradient(135deg, #DDA0DD 0%, #BA55D3 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-white border-b border-gray-100 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="/" class="text-2xl font-bold text-black">Harper AI</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="features.html" class="text-gray-900 hover:text-black transition-colors">Features</a>
+                    <a href="pricing.html" class="text-gray-900 hover:text-black transition-colors">Pricing</a>
+                    <div class="relative group">
+                        <button class="text-gray-900 hover:text-black transition-colors flex items-center">
+                            Solutions
+                            <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <div class="py-1">
+                                <a href="for-sdrs.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">For SDRs</a>
+                                <a href="for-managers.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">For Managers</a>
+                                <a href="enterprise.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Enterprise</a>
+                                <a href="small-business.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Small Business</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="security.html" class="text-gray-900 hover:text-black transition-colors">Security</a>
+                    <a href="#" class="inline-flex items-center px-6 py-2.5 border border-black text-black font-medium rounded-lg hover:bg-black hover:text-white transition-all duration-200">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div class="max-w-2xl">
+                    <p class="text-lg font-semibold text-accent mb-4">Your AI SDR That Never Sleeps</p>
+                    <h1 class="text-5xl font-bold text-black leading-tight mb-8">
+                        Harper AI Calls, Emails & Qualifies Leads So Your SDRs Only Work Hot Prospects
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-12">
+                        Your personal AI SDR handles 100% of cold outreach—calls, emails, LinkedIn messages—and delivers 10-15 hot, qualified leads daily to your human SDRs. Focus on closing, not cold calling.
+                    </p>
+                    <div class="flex gap-4 mb-12">
+                        <a href="#" class="inline-flex items-center px-8 py-3 bg-gradient-primary text-white font-medium rounded-lg hover:opacity-90 transition-all duration-200">
+                            Start Your Free Trial
+                        </a>
+                        <a href="#" class="inline-flex items-center px-8 py-3 border border-primary text-primary font-medium rounded-lg hover:bg-primary hover:text-white transition-all duration-200">
+                            Watch Harper AI in Action
+                        </a>
+                    </div>
+                    <div class="space-y-8">
+                        <h3 class="text-2xl font-bold text-black mb-6">How Harper AI Works</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center text-white font-bold">
+                                    1
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-black mb-2">Harper AI Finds Perfect Prospects</h3>
+                                    <p class="text-gray-600">Your AI SDR analyzes millions of companies and contacts to find prospects that match your ideal customer profile. No more wasted time on bad-fit leads.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center text-white font-bold">
+                                    2
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-black mb-2">Harper AI Handles All Outreach</h3>
+                                    <p class="text-gray-600">Makes personalized calls using natural voice AI, sends customized emails, engages on LinkedIn, and follows up consistently until prospects respond.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center text-white font-bold">
+                                    3
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-black mb-2">Harper AI Delivers Hot Leads</h3>
+                                    <p class="text-gray-600">When prospects show interest, Harper AI immediately alerts your human SDRs with complete conversation history and next steps.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:mt-0 mt-12">
+                    <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+                        <h3 class="text-2xl font-bold text-black mb-8 text-center">See Harper AI in action</h3>
+                        <form id="demo-form" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" for="fullName">Full name</label>
+                                <input type="text" id="fullName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-black transition-all" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" for="workEmail">Work email address</label>
+                                <input type="email" id="workEmail" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-black transition-all" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" for="company">Company name</label>
+                                <input type="text" id="company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-black transition-all" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" for="employees">Number of employees</label>
+                                <input type="number" id="employees" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-black transition-all" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" for="phone">Phone number</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-black transition-all" required>
+                            </div>
+                            <button type="submit" class="w-full bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-900 transition-all duration-200 font-medium">
+                                Get Started
+                            </button>
+                            <p class="text-xs text-gray-500 text-center mt-4">
+                                By clicking "Get Started," you agree to the use of your data in accordance with Harper AI's Privacy Notice.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-12">
+                <p class="text-lg font-semibold text-accent">500+ Sales Teams Trust Harper AI</p>
+                <div class="flex justify-center gap-8 text-gray-600">
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold">10-15</span> Hot Leads Daily
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold">3x</span> More Meetings
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold">80%</span> Less Cold Calling
+                    </div>
+                </div>
+                <div class="flex justify-center gap-4 text-sm text-gray-500">
+                    <span>SOC 2 Compliant</span>
+                    <span>•</span>
+                    <span>99.9% Uptime</span>
+                    <span>•</span>
+                    <span>Enterprise Security</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center">
+                <img src="https://placehold.co/120x40" alt="Company Logo 1" class="h-8 object-contain filter grayscale hover:grayscale-0 transition-all">
+                <img src="https://placehold.co/120x40" alt="Company Logo 2" class="h-8 object-contain filter grayscale hover:grayscale-0 transition-all">
+                <img src="https://placehold.co/120x40" alt="Company Logo 3" class="h-8 object-contain filter grayscale hover:grayscale-0 transition-all">
+                <img src="https://placehold.co/120x40" alt="Company Logo 4" class="h-8 object-contain filter grayscale hover:grayscale-0 transition-all">
+                <img src="https://placehold.co/120x40" alt="Company Logo 5" class="h-8 object-contain filter grayscale hover:grayscale-0 transition-all">
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Suites Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-4xl font-bold text-black mb-6">Your AI SDR's Complete Toolkit</h2>
+                <p class="text-xl text-gray-600">Harper AI handles all aspects of prospecting and outreach, delivering only qualified, interested leads to your human SDRs.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <h3 class="text-2xl font-bold text-black mb-4">AI Voice Calling</h3>
+                    <p class="text-gray-600 mb-8">Your AI SDR makes hundreds of personalized calls daily using natural voice AI, qualifies interest, and books meetings automatically.</p>
+                    <img src="https://placehold.co/500x300" alt="AI Voice Calling Interface" class="rounded-lg w-full">
+                </div>
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <h3 class="text-2xl font-bold text-black mb-4">Intelligent Email Outreach</h3>
+                    <p class="text-gray-600 mb-8">AI writes and sends personalized emails based on prospect research, company news, and buying signals. Follows up automatically.</p>
+                    <img src="https://placehold.co/500x300" alt="Email Automation Dashboard" class="rounded-lg w-full">
+                </div>
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <h3 class="text-2xl font-bold text-black mb-4">Multi-Channel Engagement</h3>
+                    <p class="text-gray-600 mb-8">Seamlessly engage prospects across email, LinkedIn, SMS, and phone calls. Maintains consistent messaging while adapting to preferences.</p>
+                    <img src="https://placehold.co/500x300" alt="Multi-Channel Dashboard" class="rounded-lg w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl border border-gray-100">
+                    <p class="text-xl text-gray-600 mb-8">"We went from 200 cold calls daily to 15 hot conversations. Our close rate jumped from 3% to 28%."</p>
+                    <div>
+                        <div class="font-semibold text-black">Sarah Chen</div>
+                        <div class="text-gray-500">VP of Sales at TechFlow</div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100">
+                    <p class="text-xl text-gray-600 mb-8">"Harper AI books 40+ qualified meetings monthly. Our SDRs now focus on deal advancement instead of dialing for dollars."</p>
+                    <div>
+                        <div class="font-semibold text-black">Mike Rodriguez</div>
+                        <div class="text-gray-500">Sales Director at GrowthLabs</div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100">
+                    <p class="text-xl text-gray-600 mb-8">"Our SDR team doubled their quota achievement. They love focusing on warm prospects instead of cold calling."</p>
+                    <div>
+                        <div class="font-semibold text-black">Jennifer Kim</div>
+                        <div class="text-gray-500">Sales Manager at ScaleUp Inc</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="py-24 bg-gradient-primary relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-5"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white relative z-10">
+            <h2 class="text-3xl font-bold mb-6">Our AI SDR Performance Guarantee</h2>
+            <p class="text-xl mb-12 max-w-3xl mx-auto">If Harper AI doesn't deliver at least 10 qualified leads in your first 30 days, we'll work with you personally to optimize performance—or give you a full refund.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="bg-white bg-opacity-10 rounded-xl p-8 transform hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl font-bold mb-3">10+</div>
+                    <div class="text-sm font-medium">Qualified Leads Monthly<br/>Guaranteed</div>
+                </div>
+                <div class="bg-white bg-opacity-10 rounded-xl p-8 transform hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl font-bold mb-3">30</div>
+                    <div class="text-sm font-medium">Day Risk-Free<br/>Trial</div>
+                </div>
+                <div class="bg-white bg-opacity-10 rounded-xl p-8 transform hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl font-bold mb-3">100%</div>
+                    <div class="text-sm font-medium">Money Back<br/>Guarantee</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-black text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-6">Ready to Turn Your SDRs Into Closers Instead of Cold Callers?</h2>
+            <p class="text-xl text-gray-300 mb-12">Stop burning out your sales team with endless cold calling. Let Harper AI handle the outreach while your human SDRs focus on what they do best—building relationships and closing deals.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-black transition-all duration-200">
+                    Get Your AI SDR Free for 14 Days
+                </a>
+                <a href="#" class="inline-flex items-center justify-center px-8 py-3 bg-white text-black font-medium rounded-lg hover:bg-gray-100 transition-all duration-200">
+                    See Harper AI Make Live Calls
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-black font-semibold mb-4">Product</h4>
+                    <ul class="space-y-3">
+                        <li><a href="features.html" class="text-gray-600 hover:text-black transition-colors">Features</a></li>
+                        <li><a href="pricing.html" class="text-gray-600 hover:text-black transition-colors">Pricing</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black transition-colors">Integrations</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black transition-colors">API</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-black font-semibold mb-4">Solutions</h4>
+                    <ul class="space-y-3">
+                        <li><a href="for-sdrs.html" class="text-gray-600 hover:text-black transition-colors">For SDRs</a></li>
+                        <li><a href="for-managers.html" class="text-gray-600 hover:text-black transition-colors">For Managers</a></li>
+                        <li><a href="enterprise.html" class="text-gray-600 hover:text-black transition-colors">Enterprise</a></li>
+                        <li><a href="small-business.html" class="text-gray-600 hover:text-black transition-colors">Small Business</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-black font-semibold mb-4">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-600 hover:text-black transition-colors">About</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-black font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-600 hover:text-black transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black transition-colors">Support</a></li>
+                        <li><a href="security.html" class="text-gray-600 hover:text-black transition-colors">Security</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-black transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-16 pt-8 border-t border-gray-100">
+                <p class="text-gray-600 text-center">&copy; 2024 Harper AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
