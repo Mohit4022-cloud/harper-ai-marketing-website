@@ -2,24 +2,6 @@ services:
   - type: web
     name: harper-ai-marketing-website
     runtime: docker
-    repo: https://github.com/Mohit4022-cloud/harper-ai-marketing-website
-    branch: main
     dockerfilePath: ./Dockerfile
     dockerContext: .
     healthCheckPath: /
-    autoDeploy: true
-    envVars:
-      - key: PORT
-        value: 10000
-
-  # Alternative: Docker-based deployment
-  # Uncomment below if you prefer Docker deployment
-  # - type: web
-  #   name: harper-ai-website-docker
-  #   runtime: docker
-  #   dockerfilePath: ./Dockerfile
-  #   dockerContext: .
-  #   healthCheckPath: /health
-  #   envVars:
-  #     - key: PORT
-  #       value: 10000
