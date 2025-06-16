@@ -1,0 +1,277 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/product', label: 'Product' },
+  { 
+    href: '#', 
+    label: 'Solutions',
+    dropdown: [
+      { href: '/solutions/sales', label: 'For Sales Teams', description: 'Accelerate deals and boost win rates' },
+      { href: '/solutions/customer-success', label: 'For Customer Success', description: 'Reduce churn and expand accounts' },
+      { href: '/solutions/revenue-operations', label: 'For RevOps', description: 'Unify data and optimize processes' },
+      { href: '/solutions/enterprise', label: 'For Enterprise', description: 'Scale revenue intelligence across teams' },
+    ]
+  },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/customers', label: 'Customers' },
+  { href: '/about', label: 'About' },
+];
+
+const isActive = (href: string) => {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+};
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200/50">
+  <nav class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-2 group">
+        <div class="w-8 h-8 bg-gradient-to-br from-harper-purple-600 to-harper-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+          <span class="text-white font-bold text-lg">H</span>
+        </div>
+        <span class="font-display font-semibold text-xl text-gray-900">Harper AI</span>
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center space-x-8">
+        <!-- Nav Links -->
+        <ul class="flex items-center space-x-6">
+          {navLinks.map((link) => (
+            <li class={link.dropdown ? 'relative group' : ''}>
+              {link.dropdown ? (
+                <>
+                  <button
+                    type="button"
+                    class="flex items-center text-gray-600 hover:text-gray-900 font-medium transition-colors duration-200 relative group"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    {link.label}
+                    <svg class="ml-1 w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  
+                  <!-- Dropdown Menu -->
+                  <div class="absolute left-0 mt-2 w-80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                    <div class="bg-white rounded-xl shadow-xl border border-gray-200 p-2">
+                      {link.dropdown.map((item) => (
+                        <a
+                          href={item.href}
+                          class="block px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                        >
+                          <div class="font-medium text-gray-900">{item.label}</div>
+                          <div class="text-sm text-gray-600 mt-0.5">{item.description}</div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <a 
+                  href={link.href} 
+                  class={`text-gray-600 hover:text-gray-900 font-medium transition-colors duration-200 relative group ${
+                    isActive(link.href) ? 'text-harper-purple-600' : ''
+                  }`}
+                >
+                  {link.label}
+                  <span class={`absolute -bottom-1 left-0 h-0.5 bg-harper-purple-600 transition-all duration-300 ${
+                    isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}></span>
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+        
+        <!-- CTA Buttons -->
+        <div class="flex items-center space-x-4 ml-8">
+          <a 
+            href="/demo" 
+            class="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200"
+          >
+            Request Demo
+          </a>
+          <a 
+            href="/signup" 
+            class="bg-gradient-to-r from-harper-purple-600 to-harper-blue-600 text-white px-5 py-2.5 rounded-lg font-medium hover:shadow-lg hover:scale-105 transition-all duration-200"
+          >
+            Start Free Trial
+          </a>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-button"
+        type="button"
+        class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="sr-only">Open main menu</span>
+        <!-- Hamburger icon -->
+        <svg 
+          class="h-6 w-6 menu-icon" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            stroke-width="2" 
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+        <!-- Close icon -->
+        <svg 
+          class="h-6 w-6 close-icon hidden" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            stroke-width="2" 
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div 
+      id="mobile-menu" 
+      class="lg:hidden hidden"
+    >
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        {navLinks.map((link) => (
+          <>
+            {link.dropdown ? (
+              <div class="px-3 py-2">
+                <div class="font-medium text-gray-900 mb-2">{link.label}</div>
+                <div class="ml-4 space-y-1">
+                  {link.dropdown.map((item) => (
+                    <a
+                      href={item.href}
+                      class="block py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <a 
+                href={link.href} 
+                class={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+                  isActive(link.href) 
+                    ? 'text-harper-purple-600 bg-harper-purple-50' 
+                    : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                }`}
+              >
+                {link.label}
+              </a>
+            )}
+          </>
+        ))}
+        
+        <div class="pt-4 pb-2 border-t border-gray-200">
+          <a 
+            href="/demo" 
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200"
+          >
+            Request Demo
+          </a>
+          <a 
+            href="/signup" 
+            class="block mx-3 mt-2 bg-gradient-to-r from-harper-purple-600 to-harper-blue-600 text-white px-4 py-2 rounded-lg font-medium text-center hover:shadow-lg transition-all duration-200"
+          >
+            Start Free Trial
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Spacer to account for fixed header -->
+<div class="h-16 lg:h-20"></div>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = mobileMenuButton?.querySelector('.menu-icon');
+  const closeIcon = mobileMenuButton?.querySelector('.close-icon');
+  
+  mobileMenuButton?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.contains('hidden');
+    
+    if (isOpen) {
+      mobileMenu?.classList.remove('hidden');
+      menuIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'true');
+    } else {
+      mobileMenu?.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+    }
+  });
+  
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    if (!mobileMenuButton?.contains(target) && !mobileMenu?.contains(target)) {
+      mobileMenu?.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      mobileMenuButton?.setAttribute('aria-expanded', 'false');
+    }
+  });
+  
+  // Add scroll effect to header
+  let lastScrollY = 0;
+  const header = document.querySelector('header');
+  
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY > 50) {
+      header?.classList.add('shadow-sm');
+    } else {
+      header?.classList.remove('shadow-sm');
+    }
+    
+    lastScrollY = currentScrollY;
+  });
+</script>
+
+<style>
+  header {
+    transition: all 0.3s ease;
+  }
+  
+  /* Mobile menu animation */
+  #mobile-menu {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

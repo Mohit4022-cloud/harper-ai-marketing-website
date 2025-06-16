@@ -1,0 +1,310 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import Badge from '../components/ui/Badge.astro';
+
+const pricingPlans = [
+  {
+    name: 'Starter',
+    price: '$99',
+    period: '/month',
+    description: 'Perfect for small teams getting started with AI-powered lead management',
+    features: [
+      'Up to 1,000 leads/month',
+      '3 team members',
+      'Basic lead scoring',
+      'Email support',
+      'Standard integrations',
+      'Basic analytics'
+    ],
+    cta: 'Start Free Trial',
+    ctaVariant: 'outline',
+    popular: false
+  },
+  {
+    name: 'Professional',
+    price: '$299',
+    period: '/month',
+    description: 'For growing teams that need advanced features and automation',
+    features: [
+      'Up to 10,000 leads/month',
+      '10 team members',
+      'Advanced AI scoring',
+      'Priority support',
+      'All integrations',
+      'Advanced analytics',
+      'Custom workflows',
+      'API access'
+    ],
+    cta: 'Start Free Trial',
+    ctaVariant: 'primary',
+    popular: true
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: '',
+    description: 'Tailored solutions for large organizations with specific needs',
+    features: [
+      'Unlimited leads',
+      'Unlimited team members',
+      'Custom AI models',
+      'Dedicated support',
+      'Custom integrations',
+      'White-label options',
+      'On-premise deployment',
+      'SLA guarantee'
+    ],
+    cta: 'Contact Sales',
+    ctaVariant: 'outline',
+    popular: false
+  }
+];
+
+const comparisonFeatures = [
+  { feature: 'Lead Capture', starter: true, professional: true, enterprise: true },
+  { feature: 'Lead Enrichment', starter: 'Basic', professional: 'Advanced', enterprise: 'Custom' },
+  { feature: 'AI Scoring', starter: true, professional: true, enterprise: true },
+  { feature: 'Integrations', starter: '5', professional: 'Unlimited', enterprise: 'Custom' },
+  { feature: 'API Access', starter: false, professional: true, enterprise: true },
+  { feature: 'Custom Workflows', starter: false, professional: true, enterprise: true },
+  { feature: 'White Label', starter: false, professional: false, enterprise: true },
+  { feature: 'Support', starter: 'Email', professional: 'Priority', enterprise: 'Dedicated' },
+  { feature: 'Training', starter: 'Self-serve', professional: 'Webinars', enterprise: 'On-site' },
+  { feature: 'SLA', starter: false, professional: '99.9%', enterprise: 'Custom' }
+];
+
+const faqs = [
+  {
+    question: 'Can I switch plans at any time?',
+    answer: 'Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.'
+  },
+  {
+    question: 'Do you offer a free trial?',
+    answer: 'Yes, we offer a 14-day free trial for our Starter and Professional plans. No credit card required.'
+  },
+  {
+    question: 'What happens if I exceed my lead limit?',
+    answer: 'We\'ll notify you when you reach 80% of your limit. You can upgrade your plan or purchase additional lead credits.'
+  },
+  {
+    question: 'Do you offer discounts for annual billing?',
+    answer: 'Yes, we offer a 20% discount for annual prepayment on all plans.'
+  },
+  {
+    question: 'Can I cancel my subscription?',
+    answer: 'You can cancel your subscription at any time. Your access will continue until the end of your current billing period.'
+  },
+  {
+    question: 'What integrations are included?',
+    answer: 'We integrate with all major CRMs, marketing automation tools, and communication platforms. See our integrations page for a full list.'
+  }
+];
+---
+
+<BaseLayout title="Pricing - Harper AI">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden py-20 lg:py-32">
+    <div class="absolute inset-0 bg-gradient-to-br from-harper-purple-50 via-transparent to-harper-blue-50 dark:from-harper-purple-950/20 dark:to-harper-blue-950/20" />
+    
+    <div class="container relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <Badge variant="outline" class="mb-4">Pricing</Badge>
+        <h1 class="text-display-lg font-display font-bold tracking-tight mb-6">
+          Simple, Transparent Pricing
+        </h1>
+        <p class="text-xl text-muted-foreground mb-8">
+          Choose the perfect plan for your team. All plans include core features with no hidden fees.
+        </p>
+        <div class="flex items-center justify-center gap-4">
+          <span class="text-sm">Monthly</span>
+          <button class="relative inline-flex h-6 w-11 items-center rounded-full bg-muted">
+            <span class="inline-block h-4 w-4 transform rounded-full bg-background shadow-lg transition translate-x-1"></span>
+          </button>
+          <span class="text-sm">Annual <Badge variant="success" size="sm" class="ml-2">Save 20%</Badge></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {pricingPlans.map((plan) => (
+          <Card 
+            class={plan.popular ? 'relative border-primary shadow-lg scale-105' : 'relative'}
+            padding="lg"
+          >
+            {plan.popular && (
+              <Badge class="absolute -top-3 left-1/2 -translate-x-1/2">
+                Most Popular
+              </Badge>
+            )}
+            
+            <div class="text-center mb-6">
+              <h3 class="text-2xl font-bold mb-2">{plan.name}</h3>
+              <div class="flex items-baseline justify-center gap-1 mb-4">
+                <span class="text-4xl font-bold">{plan.price}</span>
+                <span class="text-muted-foreground">{plan.period}</span>
+              </div>
+              <p class="text-muted-foreground">{plan.description}</p>
+            </div>
+            
+            <ul class="space-y-3 mb-8">
+              {plan.features.map((feature) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-sm">{feature}</span>
+                </li>
+              ))}
+            </ul>
+            
+            <Button 
+              href={plan.name === 'Enterprise' ? '/demo' : '/trial'} 
+              variant={plan.ctaVariant as any}
+              fullWidth
+              size="lg"
+            >
+              {plan.cta}
+            </Button>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Comparison Table -->
+  <section class="section-padding bg-muted/50">
+    <div class="container">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-display-sm font-display font-bold mb-4">
+            Compare Plans
+          </h2>
+          <p class="text-lg text-muted-foreground">
+            See which plan is right for your team
+          </p>
+        </div>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b">
+                <th class="text-left py-4 pr-4">Features</th>
+                <th class="text-center px-4 py-4">Starter</th>
+                <th class="text-center px-4 py-4">
+                  Professional
+                  <Badge variant="default" size="sm" class="ml-2">Popular</Badge>
+                </th>
+                <th class="text-center px-4 py-4">Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonFeatures.map((item) => (
+                <tr class="border-b">
+                  <td class="py-4 pr-4 font-medium">{item.feature}</td>
+                  <td class="text-center px-4 py-4">
+                    {typeof item.starter === 'boolean' ? (
+                      item.starter ? (
+                        <svg class="w-5 h-5 text-primary mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        <svg class="w-5 h-5 text-muted-foreground mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      )
+                    ) : (
+                      <span class="text-sm">{item.starter}</span>
+                    )}
+                  </td>
+                  <td class="text-center px-4 py-4">
+                    {typeof item.professional === 'boolean' ? (
+                      item.professional ? (
+                        <svg class="w-5 h-5 text-primary mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        <svg class="w-5 h-5 text-muted-foreground mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      )
+                    ) : (
+                      <span class="text-sm">{item.professional}</span>
+                    )}
+                  </td>
+                  <td class="text-center px-4 py-4">
+                    {typeof item.enterprise === 'boolean' ? (
+                      item.enterprise ? (
+                        <svg class="w-5 h-5 text-primary mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        <svg class="w-5 h-5 text-muted-foreground mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      )
+                    ) : (
+                      <span class="text-sm">{item.enterprise}</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-display-sm font-display font-bold mb-4">
+            Frequently Asked Questions
+          </h2>
+        </div>
+        
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <Card padding="lg">
+              <h3 class="text-lg font-semibold mb-2">{faq.question}</h3>
+              <p class="text-muted-foreground">{faq.answer}</p>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enterprise CTA -->
+  <section class="section-padding bg-gradient-to-br from-harper-purple-100 to-harper-blue-100 dark:from-harper-purple-950/20 dark:to-harper-blue-950/20">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <Card variant="glass" padding="lg" class="text-center">
+          <Badge variant="outline" class="mb-4">Enterprise</Badge>
+          <h2 class="text-display-xs font-display font-bold mb-4">
+            Need a Custom Solution?
+          </h2>
+          <p class="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Our Enterprise plan offers custom pricing, dedicated support, and tailored features to meet your organization's specific needs.
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <Button href="/demo" size="lg">
+              Schedule a Demo
+            </Button>
+            <Button href="mailto:sales@harper.ai" variant="outline" size="lg">
+              Contact Sales
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

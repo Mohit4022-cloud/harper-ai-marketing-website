@@ -1,0 +1,320 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import Badge from '../components/ui/Badge.astro';
+import { getCollection } from 'astro:content';
+
+// Get all case studies
+const caseStudies = await getCollection('case-studies');
+const featuredCaseStudies = caseStudies.filter(study => study.data.featured);
+
+// Define industries for filtering
+const industries = ['All', 'SaaS', 'FinTech', 'MarTech', 'HealthTech', 'E-commerce'];
+
+// Success metrics to highlight
+const successMetrics = [
+  { label: 'Average ROI', value: '12x', description: 'within 6 months' },
+  { label: 'Meeting Increase', value: '340%', description: 'on average' },
+  { label: 'Cost Reduction', value: '75%', description: 'per meeting' },
+  { label: 'Time Saved', value: '150h', description: 'per month' },
+];
+
+// Customer logos
+const customerLogos = [
+  { name: 'TechFlow', logo: '/images/logos/techflow.svg' },
+  { name: 'ScaleUp', logo: '/images/logos/scaleup.svg' },
+  { name: 'GrowthTech', logo: '/images/logos/growthtech.svg' },
+  { name: 'DataPro', logo: '/images/logos/datapro.svg' },
+  { name: 'CloudFirst', logo: '/images/logos/cloudfirst.svg' },
+  { name: 'NextGen', logo: '/images/logos/nextgen.svg' },
+];
+
+// Testimonials
+const testimonials = [
+  {
+    quote: "Harper AI transformed our entire outbound motion. We're seeing results we never thought possible.",
+    author: "David Kim",
+    role: "VP Sales, DataPro",
+    company: "DataPro",
+  },
+  {
+    quote: "The ROI was immediate. Within 30 days, we had paid for the entire year.",
+    author: "Lisa Thompson",
+    role: "CRO, CloudFirst",
+    company: "CloudFirst",
+  },
+  {
+    quote: "Our SDR team is now focused on selling, not admin work. It's been transformative.",
+    author: "Mark Johnson",
+    role: "Sales Director, NextGen",
+    company: "NextGen",
+  },
+];
+---
+
+<PageLayout 
+  title="Customer Success Stories - Harper AI" 
+  description="See how leading B2B companies are transforming their sales development with Harper AI. Real results, real ROI."
+>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-harper-purple-50 via-white to-white py-20 lg:py-32">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <Badge variant="purple" class="mb-4">Customer Success</Badge>
+        <h1 class="text-display-lg font-display font-bold text-harper-gray-900 mb-6">
+          Real Companies.<br />
+          <span class="text-gradient">Real Results.</span>
+        </h1>
+        <p class="text-xl text-harper-gray-600 mb-8 max-w-2xl mx-auto">
+          See how industry leaders are using Harper AI to transform their sales development and achieve unprecedented growth.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/demo" size="lg">
+            See Harper AI in Action
+          </Button>
+          <Button href="/trial" variant="outline" size="lg">
+            Start Free Trial
+          </Button>
+        </div>
+      </div>
+
+      <!-- Success Metrics -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+        {successMetrics.map((metric) => (
+          <div class="text-center">
+            <div class="text-display-xs font-display font-bold text-gradient mb-2">
+              {metric.value}
+            </div>
+            <div class="text-lg font-semibold text-harper-gray-900">
+              {metric.label}
+            </div>
+            <div class="text-sm text-harper-gray-600">
+              {metric.description}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Background decoration -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-harper-purple-200 rounded-full blur-3xl opacity-20"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-harper-blue-200 rounded-full blur-3xl opacity-20"></div>
+    </div>
+  </section>
+
+  <!-- Customer Logos -->
+  <section class="py-16 bg-harper-gray-50">
+    <div class="container mx-auto px-4">
+      <p class="text-center text-harper-gray-600 mb-8">Trusted by leading B2B companies</p>
+      <div class="flex flex-wrap justify-center items-center gap-8 lg:gap-12">
+        {customerLogos.map((customer) => (
+          <img 
+            src={customer.logo} 
+            alt={customer.name}
+            class="h-12 lg:h-16 opacity-60 hover:opacity-100 transition-opacity"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Case Studies -->
+  <section class="py-20 lg:py-32">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-display-md font-display font-bold text-harper-gray-900 mb-4">
+          Featured Success Stories
+        </h2>
+        <p class="text-xl text-harper-gray-600 max-w-2xl mx-auto">
+          Deep dive into how these companies achieved extraordinary results with Harper AI
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {featuredCaseStudies.map((study) => (
+          <Card class="hover-lift h-full">
+            <div class="p-8">
+              <div class="flex items-start justify-between mb-6">
+                <img 
+                  src={study.data.logo} 
+                  alt={study.data.company}
+                  class="h-10"
+                />
+                <Badge variant="purple">{study.data.industry}</Badge>
+              </div>
+              
+              <h3 class="text-2xl font-display font-bold text-harper-gray-900 mb-4">
+                {study.data.title}
+              </h3>
+              
+              <p class="text-harper-gray-600 mb-6">
+                {study.data.description}
+              </p>
+
+              <!-- Key Metrics -->
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="bg-harper-gray-50 rounded-lg p-4">
+                  <div class="text-2xl font-bold text-gradient">
+                    {study.data.metrics.meetingsBooked}
+                  </div>
+                  <div class="text-sm text-harper-gray-600">Meetings Growth</div>
+                </div>
+                <div class="bg-harper-gray-50 rounded-lg p-4">
+                  <div class="text-2xl font-bold text-gradient">
+                    {study.data.metrics.roi}
+                  </div>
+                  <div class="text-sm text-harper-gray-600">Return on Investment</div>
+                </div>
+              </div>
+
+              <Button href={`/case-studies/${study.slug}`} variant="outline" fullWidth>
+                Read Full Story
+              </Button>
+            </div>
+          </Card>
+        ))}
+      </div>
+
+      <!-- View All Case Studies -->
+      <div class="text-center mt-12">
+        <Button href="/case-studies" variant="ghost" size="lg">
+          View All Case Studies
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Filter -->
+  <section class="py-20 bg-harper-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-display-md font-display font-bold text-harper-gray-900 mb-4">
+          Success Across Industries
+        </h2>
+        <p class="text-xl text-harper-gray-600 max-w-2xl mx-auto mb-8">
+          Harper AI delivers results for B2B companies of all sizes and industries
+        </p>
+
+        <!-- Industry Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12" x-data="{ selected: 'All' }">
+          {industries.map((industry) => (
+            <button
+              @click={`selected = '${industry}'`}
+              :class={`selected === '${industry}' ? 'bg-harper-purple-600 text-white' : 'bg-white text-harper-gray-700'`}
+              class="px-6 py-2 rounded-full font-medium transition-all duration-200 hover:shadow-md"
+            >
+              {industry}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Case Study Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {caseStudies.map((study) => (
+          <Card class="hover-lift">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <Badge variant="secondary" size="sm">{study.data.industry}</Badge>
+                <span class="text-sm text-harper-gray-500">{study.data.size}</span>
+              </div>
+              
+              <h3 class="text-xl font-display font-semibold text-harper-gray-900 mb-3">
+                {study.data.company}
+              </h3>
+              
+              <p class="text-harper-gray-600 mb-4 line-clamp-2">
+                {study.data.description}
+              </p>
+
+              <div class="flex items-center justify-between text-sm">
+                <span class="font-semibold text-gradient">
+                  {study.data.metrics.meetingsBooked}
+                </span>
+                <a 
+                  href={`/case-studies/${study.slug}`}
+                  class="text-harper-purple-600 hover:text-harper-purple-700 font-medium"
+                >
+                  Read more →
+                </a>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Grid -->
+  <section class="py-20 lg:py-32">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-display-md font-display font-bold text-harper-gray-900 mb-4">
+          What Our Customers Say
+        </h2>
+        <p class="text-xl text-harper-gray-600 max-w-2xl mx-auto">
+          Don't just take our word for it - hear from sales leaders who've transformed their teams with Harper AI
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {testimonials.map((testimonial) => (
+          <Card class="h-full">
+            <div class="p-8">
+              <div class="mb-6">
+                <svg class="w-10 h-10 text-harper-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+              </div>
+              
+              <p class="text-lg text-harper-gray-700 mb-6 italic">
+                "{testimonial.quote}"
+              </p>
+              
+              <div class="border-t pt-6">
+                <div class="font-semibold text-harper-gray-900">
+                  {testimonial.author}
+                </div>
+                <div class="text-sm text-harper-gray-600">
+                  {testimonial.role}
+                </div>
+                <div class="text-sm text-harper-purple-600 font-medium mt-1">
+                  {testimonial.company}
+                </div>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-br from-harper-purple-600 to-harper-blue-600">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-display-md font-display font-bold text-white mb-6">
+        Ready to Join These Success Stories?
+      </h2>
+      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+        See how Harper AI can transform your sales development in just 30 days
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/demo" variant="secondary" size="lg">
+          Book a Demo
+        </Button>
+        <Button href="/trial" variant="outline" size="lg" class="!text-white !border-white hover:!bg-white/10">
+          Start Free Trial
+        </Button>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<script>
+  // Add Alpine.js for interactivity
+  import Alpine from 'alpinejs';
+  window.Alpine = Alpine;
+  Alpine.start();
+</script>

@@ -1,0 +1,116 @@
+---
+export interface Option {
+  value: string;
+  label: string;
+  disabled?: boolean;
+}
+
+export interface Props {
+  name?: string;
+  id?: string;
+  options: Option[];
+  value?: string;
+  placeholder?: string;
+  disabled?: boolean;
+  required?: boolean;
+  class?: string;
+  label?: string;
+  error?: string;
+  hint?: string;
+  [key: string]: any;
+}
+
+const {
+  name,
+  id,
+  options = [],
+  value,
+  placeholder = 'Select an option',
+  disabled = false,
+  required = false,
+  class: className = '',
+  label,
+  error,
+  hint,
+  ...rest
+} = Astro.props;
+
+const selectId = id || name;
+const baseStyles = 'flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50';
+
+const errorStyles = error ? 'border-destructive focus:ring-destructive' : '';
+
+const classes = [
+  baseStyles,
+  errorStyles,
+  className
+].filter(Boolean).join(' ');
+---
+
+<div class="w-full">
+  {label && (
+    <label 
+      for={selectId}
+      class="block text-sm font-medium text-foreground mb-2"
+    >
+      {label}
+      {required && <span class="text-destructive ml-1">*</span>}
+    </label>
+  )}
+  
+  <div class="relative">
+    <select
+      name={name}
+      id={selectId}
+      disabled={disabled}
+      required={required}
+      class={classes}
+      aria-invalid={error ? 'true' : undefined}
+      aria-describedby={error ? `${selectId}-error` : hint ? `${selectId}-hint` : undefined}
+      {...rest}
+    >
+      {placeholder && (
+        <option value="" disabled selected={!value}>
+          {placeholder}
+        </option>
+      )}
+      {options.map((option) => (
+        <option 
+          value={option.value} 
+          disabled={option.disabled}
+          selected={value === option.value}
+        >
+          {option.label}
+        </option>
+      ))}
+    </select>
+    
+    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+      <svg
+        class="h-4 w-4 text-muted-foreground"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 9l-7 7-7-7"
+        />
+      </svg>
+    </div>
+  </div>
+  
+  {error && (
+    <p id={`${selectId}-error`} class="mt-2 text-sm text-destructive">
+      {error}
+    </p>
+  )}
+  
+  {hint && !error && (
+    <p id={`${selectId}-hint`} class="mt-2 text-sm text-muted-foreground">
+      {hint}
+    </p>
+  )}
+</div>

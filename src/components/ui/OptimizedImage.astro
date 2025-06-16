@@ -1,0 +1,155 @@
+---
+export interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  decoding?: 'async' | 'sync' | 'auto';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  sizes?: string;
+  srcset?: string;
+  class?: string;
+  style?: string;
+  pictureClass?: string;
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  loading = 'lazy',
+  decoding = 'async',
+  fetchpriority = 'auto',
+  sizes,
+  srcset,
+  class: className,
+  style,
+  pictureClass,
+} = Astro.props;
+
+// Generate multiple image sources for responsive images
+const generateSrcSet = (imageSrc: string) => {
+  if (srcset) return srcset;
+  
+  // If it's an external URL, return as is
+  if (imageSrc.startsWith('http')) return undefined;
+  
+  // For local images, generate srcset
+  const baseUrl = imageSrc.replace(/\.[^/.]+$/, '');
+  const extension = imageSrc.match(/\.[^/.]+$/)?.[0] || '.jpg';
+  
+  return `
+    ${baseUrl}-400w${extension} 400w,
+    ${baseUrl}-800w${extension} 800w,
+    ${baseUrl}-1200w${extension} 1200w,
+    ${baseUrl}-1600w${extension} 1600w
+  `.trim();
+};
+
+const generatedSrcSet = generateSrcSet(src);
+
+// Generate sizes attribute if not provided
+const defaultSizes = sizes || '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
+---
+
+<picture class={pictureClass}>
+  <!-- WebP format for modern browsers -->
+  {src.endsWith('.jpg') || src.endsWith('.jpeg') || src.endsWith('.png') ? (
+    <source
+      type="image/webp"
+      srcset={generatedSrcSet?.replace(/\.(jpg|jpeg|png)/g, '.webp')}
+      sizes={defaultSizes}
+    />
+  ) : null}
+  
+  <!-- AVIF format for cutting-edge browsers -->
+  {src.endsWith('.jpg') || src.endsWith('.jpeg') || src.endsWith('.png') ? (
+    <source
+      type="image/avif"
+      srcset={generatedSrcSet?.replace(/\.(jpg|jpeg|png)/g, '.avif')}
+      sizes={defaultSizes}
+    />
+  ) : null}
+  
+  <!-- Fallback image -->
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    decoding={decoding}
+    fetchpriority={fetchpriority}
+    srcset={generatedSrcSet}
+    sizes={defaultSizes}
+    class={className}
+    style={style}
+  />
+</picture>
+
+<style>
+  /* Blur-up effect for lazy-loaded images */
+  picture {
+    display: contents;
+  }
+  
+  img {
+    transition: filter 0.3s ease-out;
+  }
+  
+  img[loading="lazy"] {
+    filter: blur(5px);
+  }
+  
+  img[loading="lazy"].loaded {
+    filter: blur(0);
+  }
+</style>
+
+<script>
+  // Add loaded class when images are loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    
+    lazyImages.forEach(img => {
+      if (img.complete) {
+        img.classList.add('loaded');
+      } else {
+        img.addEventListener('load', () => {
+          img.classList.add('loaded');
+        });
+      }
+    });
+  });
+  
+  // Intersection Observer for additional optimization
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target as HTMLImageElement;
+          
+          // Preload the image
+          const tempImg = new Image();
+          tempImg.src = img.src;
+          
+          // Add high priority for images in viewport
+          if (img.getBoundingClientRect().top < window.innerHeight) {
+            img.setAttribute('fetchpriority', 'high');
+          }
+          
+          observer.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '50px 0px',
+      threshold: 0.01
+    });
+    
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      imageObserver.observe(img);
+    });
+  }
+</script>

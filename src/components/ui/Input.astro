@@ -1,0 +1,83 @@
+---
+export interface Props {
+  type?: 'text' | 'email' | 'password' | 'tel' | 'url' | 'number' | 'search';
+  name?: string;
+  id?: string;
+  placeholder?: string;
+  value?: string;
+  disabled?: boolean;
+  required?: boolean;
+  readonly?: boolean;
+  class?: string;
+  label?: string;
+  error?: string;
+  hint?: string;
+  [key: string]: any;
+}
+
+const {
+  type = 'text',
+  name,
+  id,
+  placeholder,
+  value,
+  disabled = false,
+  required = false,
+  readonly = false,
+  class: className = '',
+  label,
+  error,
+  hint,
+  ...rest
+} = Astro.props;
+
+const inputId = id || name;
+const baseStyles = 'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50';
+
+const errorStyles = error ? 'border-destructive focus-visible:ring-destructive' : '';
+
+const classes = [
+  baseStyles,
+  errorStyles,
+  className
+].filter(Boolean).join(' ');
+---
+
+<div class="w-full">
+  {label && (
+    <label 
+      for={inputId}
+      class="block text-sm font-medium text-foreground mb-2"
+    >
+      {label}
+      {required && <span class="text-destructive ml-1">*</span>}
+    </label>
+  )}
+  
+  <input
+    type={type}
+    name={name}
+    id={inputId}
+    placeholder={placeholder}
+    value={value}
+    disabled={disabled}
+    required={required}
+    readonly={readonly}
+    class={classes}
+    aria-invalid={error ? 'true' : undefined}
+    aria-describedby={error ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined}
+    {...rest}
+  />
+  
+  {error && (
+    <p id={`${inputId}-error`} class="mt-2 text-sm text-destructive">
+      {error}
+    </p>
+  )}
+  
+  {hint && !error && (
+    <p id={`${inputId}-hint`} class="mt-2 text-sm text-muted-foreground">
+      {hint}
+    </p>
+  )}
+</div>

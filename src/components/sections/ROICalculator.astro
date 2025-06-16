@@ -1,0 +1,319 @@
+---
+import Card from '../ui/Card.astro';
+import Input from '../ui/Input.astro';
+import Button from '../ui/Button.astro';
+import Badge from '../ui/Badge.astro';
+
+export interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<section class={`py-16 ${className}`}>
+  <div class="container mx-auto px-4">
+    <Card class="max-w-4xl mx-auto">
+      <div class="p-8 lg:p-12">
+        <div class="text-center mb-8">
+          <Badge variant="purple" class="mb-4">ROI Calculator</Badge>
+          <h2 class="text-display-sm font-display font-bold text-harper-gray-900 mb-4">
+            Calculate Your ROI with Harper AI
+          </h2>
+          <p class="text-lg text-harper-gray-600 max-w-2xl mx-auto">
+            See how much revenue Harper AI could generate for your business based on your current sales metrics
+          </p>
+        </div>
+
+        <div class="roi-calculator" x-data="roiCalculator()">
+          <!-- Input Section -->
+          <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div>
+              <label class="block text-sm font-medium text-harper-gray-700 mb-2">
+                Number of SDRs
+              </label>
+              <input
+                type="number"
+                x-model="inputs.sdrCount"
+                @input="calculate()"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-harper-purple-600 focus:border-transparent"
+                min="1"
+                max="100"
+              />
+              <p class="text-xs text-harper-gray-500 mt-1">Current SDR team size</p>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-harper-gray-700 mb-2">
+                Meetings per SDR/Month
+              </label>
+              <input
+                type="number"
+                x-model="inputs.meetingsPerSdr"
+                @input="calculate()"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-harper-purple-600 focus:border-transparent"
+                min="1"
+                max="100"
+              />
+              <p class="text-xs text-harper-gray-500 mt-1">Average qualified meetings</p>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-harper-gray-700 mb-2">
+                Average Deal Size ($)
+              </label>
+              <input
+                type="number"
+                x-model="inputs.avgDealSize"
+                @input="calculate()"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-harper-purple-600 focus:border-transparent"
+                min="1000"
+                max="1000000"
+                step="1000"
+              />
+              <p class="text-xs text-harper-gray-500 mt-1">Your typical contract value</p>
+            </div>
+          </div>
+
+          <!-- Advanced Settings (Collapsible) -->
+          <div class="mb-8">
+            <button
+              @click="showAdvanced = !showAdvanced"
+              class="text-harper-purple-600 hover:text-harper-purple-700 font-medium text-sm flex items-center"
+            >
+              <span x-text="showAdvanced ? 'Hide' : 'Show'"></span> Advanced Settings
+              <svg
+                class="w-4 h-4 ml-1 transition-transform"
+                :class="{ 'rotate-180': showAdvanced }"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div x-show="showAdvanced" x-transition class="grid md:grid-cols-3 gap-6 mt-4">
+              <div>
+                <label class="block text-sm font-medium text-harper-gray-700 mb-2">
+                  Meeting to Opp Rate (%)
+                </label>
+                <input
+                  type="number"
+                  x-model="inputs.meetingToOppRate"
+                  @input="calculate()"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-harper-purple-600 focus:border-transparent"
+                  min="1"
+                  max="100"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-harper-gray-700 mb-2">
+                  Close Rate (%)
+                </label>
+                <input
+                  type="number"
+                  x-model="inputs.closeRate"
+                  @input="calculate()"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-harper-purple-600 focus:border-transparent"
+                  min="1"
+                  max="100"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-harper-gray-700 mb-2">
+                  SDR Salary ($)
+                </label>
+                <input
+                  type="number"
+                  x-model="inputs.sdrSalary"
+                  @input="calculate()"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-harper-purple-600 focus:border-transparent"
+                  min="30000"
+                  max="150000"
+                  step="5000"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Results Section -->
+          <div class="bg-gradient-to-br from-harper-purple-50 to-harper-blue-50 rounded-xl p-8">
+            <h3 class="text-xl font-display font-semibold text-harper-gray-900 mb-6">
+              Your Projected Results with Harper AI
+            </h3>
+
+            <div class="grid md:grid-cols-2 gap-8">
+              <!-- Current State -->
+              <div>
+                <h4 class="text-sm font-medium text-harper-gray-600 mb-4">Current Performance</h4>
+                <div class="space-y-3">
+                  <div class="flex justify-between">
+                    <span class="text-harper-gray-700">Monthly Meetings</span>
+                    <span class="font-semibold" x-text="results.current.monthlyMeetings"></span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-harper-gray-700">Monthly Pipeline</span>
+                    <span class="font-semibold" x-text="'$' + results.current.monthlyPipeline.toLocaleString()"></span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-harper-gray-700">Annual Revenue</span>
+                    <span class="font-semibold" x-text="'$' + results.current.annualRevenue.toLocaleString()"></span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-harper-gray-700">Annual SDR Cost</span>
+                    <span class="font-semibold" x-text="'$' + results.current.annualCost.toLocaleString()"></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- With Harper AI -->
+              <div>
+                <h4 class="text-sm font-medium text-harper-gray-600 mb-4">With Harper AI</h4>
+                <div class="space-y-3">
+                  <div class="flex justify-between">
+                    <span class="text-harper-gray-700">Monthly Meetings</span>
+                    <span class="font-semibold text-harper-purple-600" x-text="results.withHarper.monthlyMeetings"></span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-harper-gray-700">Monthly Pipeline</span>
+                    <span class="font-semibold text-harper-purple-600" x-text="'$' + results.withHarper.monthlyPipeline.toLocaleString()"></span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-harper-gray-700">Annual Revenue</span>
+                    <span class="font-semibold text-harper-purple-600" x-text="'$' + results.withHarper.annualRevenue.toLocaleString()"></span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-harper-gray-700">Annual Cost</span>
+                    <span class="font-semibold text-harper-purple-600" x-text="'$' + results.withHarper.annualCost.toLocaleString()"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROI Summary -->
+            <div class="mt-8 pt-8 border-t border-harper-purple-200">
+              <div class="grid md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <div class="text-3xl font-display font-bold text-gradient mb-2" x-text="results.roi.revenueIncrease + '%'"></div>
+                  <div class="text-sm text-harper-gray-600">Revenue Increase</div>
+                </div>
+                <div>
+                  <div class="text-3xl font-display font-bold text-gradient mb-2" x-text="results.roi.costSavings + '%'"></div>
+                  <div class="text-sm text-harper-gray-600">Cost Reduction</div>
+                </div>
+                <div>
+                  <div class="text-3xl font-display font-bold text-gradient mb-2" x-text="results.roi.roiMultiple + 'x'"></div>
+                  <div class="text-sm text-harper-gray-600">ROI Multiple</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA Section -->
+          <div class="text-center mt-8">
+            <p class="text-harper-gray-600 mb-4">
+              Ready to achieve these results for your business?
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="/demo" size="lg">
+                See Harper AI in Action
+              </Button>
+              <Button href="/trial" variant="outline" size="lg">
+                Start Free Trial
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Card>
+  </div>
+</section>
+
+<script>
+  function roiCalculator() {
+    return {
+      showAdvanced: false,
+      inputs: {
+        sdrCount: 5,
+        meetingsPerSdr: 20,
+        avgDealSize: 50000,
+        meetingToOppRate: 25,
+        closeRate: 20,
+        sdrSalary: 65000,
+      },
+      results: {
+        current: {
+          monthlyMeetings: 0,
+          monthlyPipeline: 0,
+          annualRevenue: 0,
+          annualCost: 0,
+        },
+        withHarper: {
+          monthlyMeetings: 0,
+          monthlyPipeline: 0,
+          annualRevenue: 0,
+          annualCost: 0,
+        },
+        roi: {
+          revenueIncrease: 0,
+          costSavings: 0,
+          roiMultiple: 0,
+        },
+      },
+      calculate() {
+        // Current state calculations
+        const currentMonthlyMeetings = this.inputs.sdrCount * this.inputs.meetingsPerSdr;
+        const currentMonthlyOpps = currentMonthlyMeetings * (this.inputs.meetingToOppRate / 100);
+        const currentMonthlyPipeline = currentMonthlyOpps * this.inputs.avgDealSize;
+        const currentMonthlyRevenue = currentMonthlyPipeline * (this.inputs.closeRate / 100);
+        const currentAnnualRevenue = currentMonthlyRevenue * 12;
+        const currentAnnualCost = this.inputs.sdrCount * this.inputs.sdrSalary * 1.4; // 1.4x for total comp + overhead
+
+        // With Harper AI calculations (3.4x meeting increase based on case studies)
+        const harperMeetingMultiplier = 3.4;
+        const harperMonthlyMeetings = Math.round(currentMonthlyMeetings * harperMeetingMultiplier);
+        const harperMonthlyOpps = harperMonthlyMeetings * (this.inputs.meetingToOppRate / 100);
+        const harperMonthlyPipeline = harperMonthlyOpps * this.inputs.avgDealSize;
+        const harperMonthlyRevenue = harperMonthlyPipeline * (this.inputs.closeRate / 100);
+        const harperAnnualRevenue = harperMonthlyRevenue * 12;
+        
+        // Harper AI cost: $4,000/month base + $50 per meeting
+        const harperMonthlyCost = 4000 + (harperMonthlyMeetings * 50);
+        const harperAnnualCost = harperMonthlyCost * 12;
+
+        // ROI calculations
+        const revenueIncrease = Math.round(((harperAnnualRevenue - currentAnnualRevenue) / currentAnnualRevenue) * 100);
+        const costSavings = Math.round(((currentAnnualCost - harperAnnualCost) / currentAnnualCost) * 100);
+        const netBenefit = (harperAnnualRevenue - currentAnnualRevenue) + (currentAnnualCost - harperAnnualCost);
+        const roiMultiple = Math.round((netBenefit / harperAnnualCost) * 10) / 10;
+
+        // Update results
+        this.results = {
+          current: {
+            monthlyMeetings: currentMonthlyMeetings,
+            monthlyPipeline: Math.round(currentMonthlyPipeline),
+            annualRevenue: Math.round(currentAnnualRevenue),
+            annualCost: Math.round(currentAnnualCost),
+          },
+          withHarper: {
+            monthlyMeetings: harperMonthlyMeetings,
+            monthlyPipeline: Math.round(harperMonthlyPipeline),
+            annualRevenue: Math.round(harperAnnualRevenue),
+            annualCost: Math.round(harperAnnualCost),
+          },
+          roi: {
+            revenueIncrease: revenueIncrease,
+            costSavings: costSavings,
+            roiMultiple: roiMultiple,
+          },
+        };
+      },
+      init() {
+        this.calculate();
+      },
+    };
+  }
+</script>

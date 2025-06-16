@@ -1,0 +1,143 @@
+---
+import Seo from '../components/ui/Seo.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+  type?: 'website' | 'article' | 'product';
+  keywords?: string[];
+  noindex?: boolean;
+  jsonLd?: any;
+}
+
+const props = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Component handles all meta tags -->
+    <Seo {...props} />
+    
+    <!-- Fonts with preload for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" 
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link 
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" 
+        rel="stylesheet"
+      />
+    </noscript>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Critical CSS for above-the-fold content -->
+    <style is:inline>
+      /* Critical CSS for faster initial paint */
+      body { margin: 0; font-family: 'Inter', system-ui, sans-serif; }
+      .container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+      header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); z-index: 50; }
+      .font-display { font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif; }
+    </style>
+  </head>
+  <body>
+    <slot />
+    
+    <!-- Analytics Integration -->
+    <script is:inline>
+      // Google Analytics 4 - Replace GA_MEASUREMENT_ID with your actual ID
+      if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID', {
+          page_path: window.location.pathname,
+        });
+        
+        // Load GA script asynchronously
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
+        document.head.appendChild(script);
+      }
+      
+      // Simple performance monitoring
+      if ('performance' in window) {
+        window.addEventListener('load', () => {
+          const perfData = window.performance.timing;
+          const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+          const domReadyTime = perfData.domContentLoadedEventEnd - perfData.navigationStart;
+          
+          // Log performance metrics
+          console.log('Page Load Time:', pageLoadTime, 'ms');
+          console.log('DOM Ready Time:', domReadyTime, 'ms');
+          
+          // Send to analytics if needed
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_timing', {
+              event_category: 'Performance',
+              name: 'load',
+              value: pageLoadTime
+            });
+          }
+        });
+      }
+    </script>
+    
+    <!-- Image lazy loading polyfill -->
+    <script is:inline>
+      if ('loading' in HTMLImageElement.prototype) {
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        images.forEach(img => {
+          img.src = img.dataset.src || img.src;
+        });
+      } else {
+        // Fallback for browsers that don't support lazy loading
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+        document.body.appendChild(script);
+      }
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  /* Custom font for display headings */
+  .font-display {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Selection colors */
+  ::selection {
+    background-color: hsl(254 89% 62% / 0.2);
+    color: hsl(254 89% 62%);
+  }
+  
+  /* Focus visible styles */
+  *:focus-visible {
+    outline: 2px solid hsl(254 89% 62%);
+    outline-offset: 2px;
+  }
+</style>
