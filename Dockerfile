@@ -3,11 +3,14 @@ FROM node:18-alpine AS build
 
 WORKDIR /app
 
+# Install Python and build dependencies for native modules
+RUN apk add --no-cache python3 make g++ 
+
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install --production=false
+# Install dependencies with verbose logging
+RUN npm install --production=false --verbose
 
 # Copy source files
 COPY . .
