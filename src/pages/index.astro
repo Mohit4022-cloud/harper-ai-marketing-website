@@ -69,215 +69,324 @@ const integrations = [
 
 <PageLayout title="AI-Powered Revenue Intelligence Platform">
   <!-- Hero Section -->
-  <section class="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white pt-16 pb-20 lg:pt-24 lg:pb-28">
-    <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-4xl mx-auto">
-        <!-- Badge -->
-        <div class="inline-flex items-center px-4 py-2 bg-harper-purple-100 text-harper-purple-700 rounded-full text-sm font-medium mb-6">
-          <span class="mr-2">🚀</span>
-          New: AI Deal Scoring now available
+  <section class="relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 pt-16 pb-20 lg:pt-24 lg:pb-32">
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-blue-400/20 to-teal-400/20 rounded-full blur-3xl animate-pulse float-delayed"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-mesh opacity-10 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-5xl mx-auto">
+        <!-- Enhanced Badge -->
+        <div class="inline-flex items-center px-6 py-3 glass-card text-purple-700 rounded-full text-sm font-medium mb-8 hover:scale-105 transition-all duration-300 cursor-pointer">
+          <span class="mr-3 text-lg">🚀</span>
+          <span class="font-semibold">New:</span>
+          <span class="ml-1">AI Deal Scoring with 97% accuracy</span>
+          <div class="ml-3 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
         </div>
         
-        <!-- Headline -->
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-6">
+        <!-- Enhanced Headline -->
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-gray-900 mb-8 leading-tight">
           Transform Your Revenue with
-          <span class="text-gradient"> AI-Powered Intelligence</span>
+          <span class="text-gradient bg-gradient-aurora bg-clip-text text-transparent animate-in"> 
+            AI-Powered Intelligence
+          </span>
         </h1>
         
-        <!-- Subheadline -->
-        <p class="text-xl lg:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto">
-          Harper AI automates CRM updates, predicts deal outcomes, and helps your sales team close more deals faster. Join 1,000+ revenue teams already using Harper.
+        <!-- Enhanced Subheadline -->
+        <p class="text-xl lg:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed text-balance">
+          Harper AI revolutionizes revenue operations by automating CRM updates, predicting deal outcomes with unprecedented accuracy, and empowering your sales team to close deals 3x faster. 
+          <span class="text-purple-600 font-semibold">Join 2,500+ revenue teams</span> already transforming their growth.
         </p>
         
-        <!-- CTAs -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <!-- Enhanced CTAs -->
+        <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
           <a 
             href="/signup" 
-            class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-harper-purple-600 to-harper-blue-600 text-white rounded-lg font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
+            class="group inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-harper-purple-600 to-harper-blue-600 text-white rounded-2xl font-semibold text-lg shadow-hard hover:shadow-glow-purple hover:scale-105 transition-all duration-300 magnetic"
           >
-            Start Free Trial
-            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <span>Start Free Trial</span>
+            <svg class="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
             </svg>
           </a>
           <a 
             href="/demo" 
-            class="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-300 text-gray-900 rounded-lg font-semibold text-lg hover:border-gray-400 hover:shadow-lg transition-all duration-200"
+            class="group inline-flex items-center justify-center px-10 py-5 glass-card text-gray-900 rounded-2xl font-semibold text-lg hover:shadow-medium hover:scale-105 transition-all duration-300 magnetic"
           >
-            <svg class="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="mr-3 w-6 h-6 text-purple-600 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            Watch Demo
+            <span>Watch Demo</span>
           </a>
         </div>
-      </div>
-      
-      <!-- Trust Indicators -->
-      <div class="mt-16 pt-8 border-t border-gray-200">
-        <p class="text-center text-gray-600 mb-6">Trusted by leading revenue teams</p>
-        <div class="flex flex-wrap justify-center items-center gap-8 opacity-60 grayscale">
-          {customerLogos.map((logo) => (
-            <img 
-              src={logo.src} 
-              alt={logo.name} 
-              class="h-8 lg:h-10"
-            />
-          ))}
+
+        <!-- Trust Indicators -->
+        <div class="flex flex-col items-center space-y-4">
+          <div class="flex items-center space-x-2 text-sm text-gray-600">
+            <div class="flex -space-x-2">
+              <img class="w-8 h-8 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="User 1">
+              <img class="w-8 h-8 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face" alt="User 2">
+              <img class="w-8 h-8 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="User 3">
+              <div class="w-8 h-8 rounded-full border-2 border-white bg-purple-100 flex items-center justify-center text-xs font-semibold text-purple-600">+2K</div>
+            </div>
+            <span>Trusted by revenue leaders worldwide</span>
+          </div>
+          <div class="flex items-center space-x-6 text-sm text-gray-500">
+            <div class="flex items-center space-x-1">
+              <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>14-day free trial</span>
+            </div>
+            <div class="flex items-center space-x-1">
+              <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>No credit card required</span>
+            </div>
+            <div class="flex items-center space-x-1">
+              <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Cancel anytime</span>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
+  
+  <!-- Enhanced Features Section -->
+  <section class="py-20 lg:py-32 bg-gradient-to-b from-white to-gray-50">
+    <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-4xl mx-auto mb-20">
+        <div class="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium mb-6">
+          <span class="mr-2">⚡</span>
+          Powered by Advanced AI
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6">
+          Everything you need to 
+          <span class="text-gradient">accelerate revenue</span>
+        </h2>
+        <p class="text-xl text-gray-600 leading-relaxed">
+          Harper AI brings together all the tools your revenue team needs in one intelligent platform, 
+          powered by cutting-edge machine learning and predictive analytics.
+        </p>
+      </div>
+      
+      <!-- Enhanced Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Hero Feature Card -->
+        <div class="md:col-span-2 lg:col-span-2 lg:row-span-2 group">
+          <div class="h-full bg-gradient-to-br from-purple-600 to-blue-600 rounded-3xl p-8 text-white relative overflow-hidden hover:scale-[1.02] transition-all duration-500 shadow-hard">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 bg-gradient-mesh opacity-20"></div>
+            <div class="absolute -top-20 -right-20 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+            
+            <div class="relative z-10">
+              <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                {features[0].icon}
+              </div>
+              <h3 class="text-3xl font-bold mb-4">{features[0].title}</h3>
+              <p class="text-white/90 text-lg mb-8 leading-relaxed">{features[0].description}</p>
+              
+              <!-- Mock Dashboard Preview -->
+              <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                    <span class="text-sm font-medium">Live Updates</span>
+                  </div>
+                  <span class="text-sm text-white/70">97% Accuracy</span>
+                </div>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm">Deal Score Updated</span>
+                    <span class="text-xs bg-green-400/20 text-green-300 px-2 py-1 rounded-full">High</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm">Contact Enriched</span>
+                    <span class="text-xs bg-blue-400/20 text-blue-300 px-2 py-1 rounded-full">Auto</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm">Next Action Suggested</span>
+                    <span class="text-xs bg-purple-400/20 text-purple-300 px-2 py-1 rounded-full">AI</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Enhanced Feature Cards -->
+        {features.slice(1).map((feature, index) => (
+          <div class={`group tilt ${index === 0 ? 'lg:col-span-2' : ''}`}>
+            <div class="h-full bg-white rounded-3xl p-8 shadow-soft hover:shadow-medium transition-all duration-500 border border-gray-100 hover:border-purple-200">
+              <div class={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} text-white text-2xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                {feature.icon}
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors duration-300">{feature.title}</h3>
+              <p class="text-gray-600 leading-relaxed mb-6">{feature.description}</p>
+              
+              {/* Interactive Elements */}
+              {index === 0 && (
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                    <span class="text-sm font-medium">Forecast Accuracy</span>
+                    <div class="flex items-center space-x-2">
+                      <div class="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="w-4/5 h-full bg-gradient-to-r from-green-400 to-green-500 rounded-full"></div>
+                      </div>
+                      <span class="text-sm font-semibold text-green-600">95%</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                    <span class="text-sm font-medium">Pipeline Health</span>
+                    <span class="text-sm font-semibold text-blue-600">Excellent</span>
+                  </div>
+                </div>
+              )}
+              
+              {index === 1 && (
+                <div class="bg-gradient-to-r from-blue-50 to-teal-50 rounded-xl p-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-gray-700">Team Performance</span>
+                    <span class="text-xs text-green-600 font-semibold">↗ +25%</span>
+                  </div>
+                  <div class="flex space-x-1">
+                    {[...Array(5)].map((_, i) => (
+                      <div key={i} class={`h-8 w-4 rounded-sm ${i < 4 ? 'bg-gradient-to-t from-blue-400 to-blue-500' : 'bg-gray-200'}`}></div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Stats Row -->
+      <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
+        {[
+          { number: '97%', label: 'Deal Prediction Accuracy', icon: '🎯' },
+          { number: '3x', label: 'Faster Deal Closure', icon: '⚡' },
+          { number: '40%', label: 'Revenue Increase', icon: '📈' },
+          { number: '10hrs', label: 'Saved Per Week', icon: '⏰' }
+        ].map((stat, index) => (
+          <div key={index} class="text-center group">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-100 to-blue-100 text-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+              {stat.icon}
+            </div>
+            <div class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-300">
+              {stat.number}
+            </div>
+            <div class="text-gray-600 font-medium">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Enhanced Customer Testimonials -->
+  <section class="py-20 lg:py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-10 w-32 h-32 bg-purple-200/30 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 w-40 h-40 bg-blue-200/30 rounded-full blur-3xl"></div>
     </div>
     
-    <!-- Background decoration -->
-    <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-harper-purple-200 rounded-full blur-3xl opacity-20"></div>
-    <div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-harper-blue-200 rounded-full blur-3xl opacity-20"></div>
-  </section>
-  
-  <!-- Problem/Solution Section -->
-  <section class="py-20 lg:py-28 bg-white">
-    <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div>
-          <h2 class="text-3xl lg:text-4xl font-display font-bold text-gray-900 mb-6">
-            Stop wasting time on manual CRM updates
-          </h2>
-          <div class="space-y-4">
-            <div class="flex items-start">
-              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center mt-1">
-                <span class="text-sm">✕</span>
-              </div>
-              <p class="ml-3 text-gray-600">Sales reps spend 5+ hours/week on data entry</p>
-            </div>
-            <div class="flex items-start">
-              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center mt-1">
-                <span class="text-sm">✕</span>
-              </div>
-              <p class="ml-3 text-gray-600">60% of CRM data is outdated or incomplete</p>
-            </div>
-            <div class="flex items-start">
-              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center mt-1">
-                <span class="text-sm">✕</span>
-              </div>
-              <p class="ml-3 text-gray-600">Inaccurate forecasts lead to missed targets</p>
-            </div>
-          </div>
-          
-          <div class="mt-8 p-6 bg-gradient-to-r from-harper-purple-50 to-harper-blue-50 rounded-xl">
-            <h3 class="font-semibold text-gray-900 mb-3">With Harper AI:</h3>
-            <div class="space-y-3">
-              <div class="flex items-start">
-                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center mt-0.5">
-                  <span class="text-sm">✓</span>
-                </div>
-                <p class="ml-3 text-gray-700">Automatic CRM updates from all interactions</p>
-              </div>
-              <div class="flex items-start">
-                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center mt-0.5">
-                  <span class="text-sm">✓</span>
-                </div>
-                <p class="ml-3 text-gray-700">Real-time deal insights and recommendations</p>
-              </div>
-              <div class="flex items-start">
-                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center mt-0.5">
-                  <span class="text-sm">✓</span>
-                </div>
-                <p class="ml-3 text-gray-700">95% accurate revenue forecasting</p>
-              </div>
-            </div>
-          </div>
+    <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-4xl mx-auto mb-20">
+        <div class="inline-flex items-center px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-6">
+          <span class="mr-2">💬</span>
+          Customer Success Stories
         </div>
-        
-        <div class="relative">
-          <div class="aspect-video bg-gradient-to-br from-harper-purple-100 to-harper-blue-100 rounded-2xl shadow-2xl overflow-hidden">
-            <img 
-              src="/demo-preview.png" 
-              alt="Harper AI Dashboard Preview" 
-              class="w-full h-full object-cover"
-            />
-            <div class="absolute inset-0 flex items-center justify-center">
-              <button class="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors duration-200 shadow-lg">
-                <svg class="w-8 h-8 text-harper-purple-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Key Features Bento Grid -->
-  <section class="py-20 lg:py-28 bg-gray-50">
-    <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-3xl lg:text-4xl font-display font-bold text-gray-900 mb-4">
-          Everything you need to accelerate revenue
+        <h2 class="text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6">
+          Loved by <span class="text-gradient">revenue teams</span> everywhere
         </h2>
-        <p class="text-xl text-gray-600">
-          Harper AI brings together all the tools your revenue team needs in one intelligent platform.
+        <p class="text-xl text-gray-600 leading-relaxed">
+          See how Harper AI is transforming revenue operations for companies of all sizes, 
+          from startups to Fortune 500 enterprises.
         </p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Large feature card -->
-        <div class="md:col-span-2 lg:col-span-2 bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300">
-          <div class={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${features[0].gradient} text-white text-2xl mb-4`}>
-            {features[0].icon}
-          </div>
-          <h3 class="text-2xl font-semibold text-gray-900 mb-3">{features[0].title}</h3>
-          <p class="text-gray-600 mb-4">{features[0].description}</p>
-          <div class="aspect-video bg-gray-100 rounded-lg"></div>
-        </div>
-        
-        <!-- Regular feature cards -->
-        {features.slice(1).map((feature) => (
-          <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-shadow duration-300">
-            <div class={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${feature.gradient} text-white text-2xl mb-4`}>
-              {feature.icon}
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
-            <p class="text-gray-600">{feature.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-  
-  <!-- Customer Testimonials -->
-  <section class="py-20 lg:py-28 bg-white">
-    <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-3xl lg:text-4xl font-display font-bold text-gray-900 mb-4">
-          Loved by revenue teams everywhere
-        </h2>
-        <p class="text-xl text-gray-600">
-          See what our customers have to say about Harper AI.
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {testimonials.map((testimonial) => (
-          <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
-            <div class="flex mb-4">
-              {[...Array(5)].map((_, i) => (
-                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+      <!-- Enhanced Testimonials Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {testimonials.map((testimonial, index) => (
+          <div class={`group tilt ${index === 1 ? 'md:scale-105' : ''}`}>
+            <div class={`h-full glass-card rounded-3xl p-8 hover:shadow-hard transition-all duration-500 ${index === 1 ? 'border-2 border-purple-200 bg-gradient-to-br from-purple-50/50 to-blue-50/50' : ''}`}>
+              <!-- Quote Icon -->
+              <div class="flex justify-between items-start mb-6">
+                <div class="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                  ))}
+                </div>
+                <svg class="w-8 h-8 text-purple-300 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
                 </svg>
-              ))}
-            </div>
-            <p class="text-gray-700 mb-6 italic">"{testimonial.quote}"</p>
-            <div class="flex items-center">
-              <div class="w-12 h-12 bg-gradient-to-br from-harper-purple-600 to-harper-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
-                {testimonial.author.split(' ').map(n => n[0]).join('')}
               </div>
-              <div class="ml-3">
-                <p class="font-semibold text-gray-900">{testimonial.author}</p>
-                <p class="text-sm text-gray-600">{testimonial.role}, {testimonial.company}</p>
+              
+              <p class="text-gray-700 mb-8 text-lg leading-relaxed font-medium">"{testimonial.quote}"</p>
+              
+              <div class="flex items-center">
+                <div class="relative">
+                  <img 
+                    src={`https://images.unsplash.com/photo-${index === 0 ? '1494790108755-2616b612b786' : index === 1 ? '1472099645785-5658abf4ff4e' : '1507003211169-0a1dd7228f2d'}?w=64&h=64&fit=crop&crop=face`}
+                    alt={testimonial.author}
+                    class="w-14 h-14 rounded-full mr-4 border-3 border-white shadow-lg group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-400 rounded-full border-2 border-white"></div>
+                </div>
+                <div>
+                  <div class="font-bold text-gray-900 text-lg">{testimonial.author}</div>
+                  <div class="text-purple-600 font-semibold text-sm">{testimonial.role}</div>
+                  <div class="text-gray-500 text-sm">{testimonial.company}</div>
+                </div>
+              </div>
+              
+              {/* Company Logo Placeholder */}
+              <div class="mt-6 pt-6 border-t border-gray-200">
+                <div class="flex items-center justify-between">
+                  <div class="text-xs text-gray-500 uppercase tracking-wide font-semibold">Verified Customer</div>
+                  <div class="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         ))}
+      </div>
+      
+      <!-- Social Proof Numbers -->
+      <div class="text-center">
+        <div class="inline-flex items-center space-x-8 bg-white/80 backdrop-blur-sm rounded-2xl px-8 py-6 shadow-soft">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-gray-900">2,500+</div>
+            <div class="text-sm text-gray-600">Happy Customers</div>
+          </div>
+          <div class="w-px h-8 bg-gray-300"></div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-gray-900">4.9/5</div>
+            <div class="text-sm text-gray-600">Average Rating</div>
+          </div>
+          <div class="w-px h-8 bg-gray-300"></div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-gray-900">99.9%</div>
+            <div class="text-sm text-gray-600">Uptime</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -339,53 +448,111 @@ const integrations = [
     </div>
   </section>
   
-  <!-- Final CTA -->
-  <section class="py-20 lg:py-28 bg-gray-50">
-    <div class="container max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl lg:text-4xl font-display font-bold text-gray-900 mb-4">
-        Ready to transform your revenue?
-      </h2>
-      <p class="text-xl text-gray-600 mb-8">
-        Join 1,000+ revenue teams already using Harper AI to accelerate growth.
-      </p>
-      
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-        <a 
-          href="/signup" 
-          class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-harper-purple-600 to-harper-blue-600 text-white rounded-lg font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
-        >
-          Start Free Trial
-          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-          </svg>
-        </a>
-        <a 
-          href="/contact" 
-          class="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-300 text-gray-900 rounded-lg font-semibold text-lg hover:border-gray-400 hover:shadow-lg transition-all duration-200"
-        >
-          Talk to Sales
-        </a>
+  <!-- Enhanced Final CTA -->
+  <section class="py-20 lg:py-32 bg-gradient-to-br from-purple-900 via-blue-900 to-teal-900 relative overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-gradient-mesh opacity-20 animate-pulse"></div>
+      <div class="absolute top-0 left-0 w-full h-full">
+        <div class="absolute top-20 left-20 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl float"></div>
+        <div class="absolute bottom-20 right-20 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl float-delayed"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"></div>
       </div>
-      
-      <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-600">
-        <span class="flex items-center">
-          <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
-          14-day free trial
-        </span>
-        <span class="flex items-center">
-          <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
-          No credit card required
-        </span>
-        <span class="flex items-center">
-          <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
-          Cancel anytime
-        </span>
+    </div>
+    
+    <div class="container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="max-w-4xl mx-auto">
+        <!-- Enhanced Badge -->
+        <div class="inline-flex items-center px-6 py-3 glass-card text-white rounded-full text-sm font-medium mb-8">
+          <span class="mr-3">🚀</span>
+          <span>Join the Revenue Revolution</span>
+          <div class="ml-3 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+        </div>
+        
+        <!-- Enhanced Headline -->
+        <h2 class="text-4xl lg:text-6xl font-display font-bold text-white mb-8 leading-tight">
+          Ready to <span class="text-gradient bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">transform</span> your revenue?
+        </h2>
+        
+        <!-- Enhanced Subheadline -->
+        <p class="text-xl lg:text-2xl text-white/90 mb-12 leading-relaxed max-w-3xl mx-auto">
+          Join <span class="font-bold text-yellow-400">2,500+ revenue teams</span> already using Harper AI to accelerate growth, 
+          increase deal velocity, and achieve predictable revenue outcomes.
+        </p>
+        
+        <!-- Enhanced CTAs -->
+        <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+          <a 
+            href="/signup" 
+            class="group inline-flex items-center justify-center px-12 py-6 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 rounded-2xl font-bold text-xl shadow-hard hover:shadow-glow-purple hover:scale-105 transition-all duration-300 magnetic"
+          >
+            <span>Start Free Trial</span>
+            <svg class="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+          <a 
+            href="/demo" 
+            class="group inline-flex items-center justify-center px-12 py-6 glass-card text-white rounded-2xl font-bold text-xl hover:shadow-medium hover:scale-105 transition-all duration-300 magnetic border-2 border-white/20"
+          >
+            <svg class="mr-3 w-6 h-6 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>Watch Demo</span>
+          </a>
+        </div>
+        
+        <!-- Enhanced Trust Indicators -->
+        <div class="flex flex-col items-center space-y-6">
+          <div class="flex flex-wrap justify-center gap-8 text-white/80">
+            <div class="flex items-center space-x-2">
+              <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span class="font-medium">14-day free trial</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span class="font-medium">No credit card required</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span class="font-medium">Cancel anytime</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span class="font-medium">SOC 2 Type II Certified</span>
+            </div>
+          </div>
+          
+          <!-- Customer Avatars -->
+          <div class="flex items-center space-x-4">
+            <div class="flex -space-x-3">
+              {[...Array(6)].map((_, i) => (
+                <img 
+                  key={i}
+                  class="w-12 h-12 rounded-full border-3 border-white shadow-lg" 
+                  src={`https://images.unsplash.com/photo-${
+                    ['1472099645785-5658abf4ff4e', '1494790108755-2616b612b786', '1507003211169-0a1dd7228f2d', 
+                     '1438761681033-6461ffad8d80', '1500648767791-00dcc994a43e', '1519345182560-3f2917c472ef'][i]
+                  }?w=48&h=48&fit=crop&crop=face`}
+                  alt={`Customer ${i + 1}`}
+                />
+              ))}
+            </div>
+            <div class="text-white/90">
+              <div class="font-semibold">Join 2,500+ revenue leaders</div>
+              <div class="text-sm text-white/70">Already transforming their growth</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
